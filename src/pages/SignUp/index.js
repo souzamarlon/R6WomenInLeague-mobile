@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Picker } from '@react-native-community/picker';
 import Background from '~/components/Background';
 
 import {
@@ -10,13 +11,13 @@ import {
   SignLink,
   SignLinkText,
 } from './styles';
-import { signInRequest } from '~/store/modules/auth/actions';
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 export default function SignIn({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [uplay, setUplay] = useState('');
-  const [region, setRegion] = useState('');
+  const [region, setRegion] = useState('South America');
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export default function SignIn({ navigation }) {
   const loading = useSelector((state) => state.auth.loading);
 
   function handleSubmit() {
-    dispatch(signInRequest(email, password));
+    dispatch(signUpRequest(name, email, uplay, region, password));
   }
 
   return (
@@ -66,16 +67,24 @@ export default function SignIn({ navigation }) {
             value={uplay}
             onChangeText={setUplay}
           />
-          <FormInput
-            icon="person-outline"
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Your Region"
-            returnKeyType="next"
-            onSubmitEditing={() => passwordRef.current.focus()}
-            value={region}
-            onChangeText={setRegion}
-          />
+          <Picker
+            selectedValue={region}
+            style={{
+              height: 50,
+              color: '#FFF',
+              // background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '4%',
+              marginBottom: 10,
+            }}
+            onValueChange={(itemValue, itemIndex) => setRegion(itemValue)}
+          >
+            <Picker.Item label="Africa" value="Africa" />
+            <Picker.Item label="Asia" value="Asia" />
+            <Picker.Item label="Europe" value="Europe" />
+            <Picker.Item label="North America" value="North America" />
+            <Picker.Item label="Oceania" value="Oceania" />
+            <Picker.Item label="South America" value="South America" />
+          </Picker>
           <FormInput
             icon="lock-outline"
             secureTextEntry
@@ -88,11 +97,11 @@ export default function SignIn({ navigation }) {
           />
 
           <SubmitButton loading={loading} onPress={handleSubmit}>
-            LOGIN
+            SIGN UP
           </SubmitButton>
         </Form>
-        <SignLink onPress={() => navigation.navigate('SignUp')}>
-          <SignLinkText>SIGN UP</SignLinkText>
+        <SignLink onPress={() => navigation.navigate('SignIn')}>
+          <SignLinkText>Already have a login!</SignLinkText>
         </SignLink>
       </Container>
     </Background>
