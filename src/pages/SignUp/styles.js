@@ -6,7 +6,8 @@ import Button from '~/components/Button';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: 'height',
+  behavior: 'padding',
+  // keyboardVerticalOffset: 20,
 })`
   display: flex;
   justify-content: center;
