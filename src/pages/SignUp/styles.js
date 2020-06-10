@@ -42,3 +42,14 @@ export const SignLinkText = styled.Text`
   font-weight: bold;
   font-size: 16px;
 `;
+
+export const RegionField = styled.View`
+  padding: 0 15px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  height: 50px;
+  border-radius: 4px;
+  font-size: 15px;
+  flex-direction: row;
+  align-items: center;
+`;

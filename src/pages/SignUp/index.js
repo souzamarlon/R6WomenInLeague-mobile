@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Text } from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Picker } from '@react-native-community/picker';
@@ -12,6 +13,7 @@ import {
   SubmitButton,
   SignLink,
   SignLinkText,
+  RegionField,
 } from './styles';
 import { signUpRequest } from '~/store/modules/auth/actions';
 
@@ -61,7 +63,7 @@ export default function SignIn({ navigation }) {
             onChangeText={setEmail}
           />
           <FormInput
-            icon="person-outline"
+            icon="videogame-asset"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Uplay NickName"
@@ -72,25 +74,26 @@ export default function SignIn({ navigation }) {
             onChangeText={setUplay}
           />
 
-          <Picker
-            selectedValue={region}
-            style={{
-              height: 50,
-              color: '#ddd',
-              backgroundColor: 'rgba(0, 0, 0, 0.1)',
-              borderRadius: '4%',
-              marginBottom: 10,
-              fontSize: 15,
-            }}
-            onValueChange={(itemValue, itemIndex) => setRegion(itemValue)}
-          >
-            <Picker.Item label="Africa" value="Africa" />
-            <Picker.Item label="Asia" value="Asia" />
-            <Picker.Item label="Europe" value="Europe" />
-            <Picker.Item label="North America" value="North America" />
-            <Picker.Item label="Oceania" value="Oceania" />
-            <Picker.Item label="South America" value="South America" />
-          </Picker>
+          <RegionField>
+            <Icon name="place" size={20} color="rgba(255, 255, 255, 0.6)" />
+            <Picker
+              selectedValue={region}
+              style={{
+                height: 50,
+                width: 170,
+                color: '#ddd',
+                marginLeft: 8,
+              }}
+              onValueChange={(itemValue, itemIndex) => setRegion(itemValue)}
+            >
+              <Picker.Item label="Africa" value="Africa" />
+              <Picker.Item label="Asia" value="Asia" />
+              <Picker.Item label="Europe" value="Europe" />
+              <Picker.Item label="North America" value="North America" />
+              <Picker.Item label="Oceania" value="Oceania" />
+              <Picker.Item label="South America" value="South America" />
+            </Picker>
+          </RegionField>
 
           <FormInput
             icon="lock-outline"
