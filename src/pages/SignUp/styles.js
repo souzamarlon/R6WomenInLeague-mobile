@@ -13,8 +13,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   align-self: center;
   align-items: center;
   padding: 0 30px;
-  background: #000;
-  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.6);
   width: 80%;
   height: 500px;
   margin: auto;
@@ -24,7 +23,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 
 export const Form = styled.View`
   align-self: stretch;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 export const FormInput = styled(Input)``;
