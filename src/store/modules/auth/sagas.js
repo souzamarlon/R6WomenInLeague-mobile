@@ -33,6 +33,18 @@ export function* signUp({ payload }) {
   try {
     const { name, email, uplay, region, password } = payload;
 
+    const uplayExists = yield call(api.get, 'stats', {
+      params: {
+        username: uplay,
+        platform: 'pc',
+        type: 'seasonal',
+      },
+    });
+
+    if (!uplayExists) {
+      throw new Error('Uplay nickname not found!');
+    }
+
     const response = yield call(api.post, 'users', {
       name,
       email,

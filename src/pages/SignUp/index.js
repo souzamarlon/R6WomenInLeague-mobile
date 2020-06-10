@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { Text } from 'react-native';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Picker } from '@react-native-community/picker';
 import Background from '~/components/Background';
@@ -28,7 +30,7 @@ export default function SignIn({ navigation }) {
 
   const loading = useSelector((state) => state.auth.loading);
 
-  function handleSubmit() {
+  async function handleSubmit() {
     dispatch(signUpRequest(name, email, uplay, region, password));
   }
 
@@ -49,6 +51,7 @@ export default function SignIn({ navigation }) {
           <FormInput
             icon="mail-outline"
             keyboardType="email-address"
+            ref={emailRef}
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="exemplo@email.com"
@@ -62,19 +65,22 @@ export default function SignIn({ navigation }) {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Uplay NickName"
+            ref={uplayRef}
             returnKeyType="next"
-            onSubmitEditing={() => emailRef.current.focus()}
+            onSubmitEditing={() => passwordRef.current.focus()}
             value={uplay}
             onChangeText={setUplay}
           />
+
           <Picker
             selectedValue={region}
             style={{
               height: 50,
-              color: '#FFF',
-              // background: 'rgba(0, 0, 0, 0.1)',
+              color: '#ddd',
+              backgroundColor: 'rgba(0, 0, 0, 0.1)',
               borderRadius: '4%',
               marginBottom: 10,
+              fontSize: 15,
             }}
             onValueChange={(itemValue, itemIndex) => setRegion(itemValue)}
           >
@@ -85,6 +91,7 @@ export default function SignIn({ navigation }) {
             <Picker.Item label="Oceania" value="Oceania" />
             <Picker.Item label="South America" value="South America" />
           </Picker>
+
           <FormInput
             icon="lock-outline"
             secureTextEntry
