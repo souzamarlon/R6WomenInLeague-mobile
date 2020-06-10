@@ -14,9 +14,9 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   align-items: center;
   padding: 0 30px;
   background: #000;
-  opacity: 0.6;
+  opacity: 0.7;
   width: 80%;
-  height: 80%;
+  height: 400px;
   margin: auto;
   border: 0;
   border-radius: 10px;

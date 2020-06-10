@@ -6,7 +6,7 @@ import Button from '~/components/Button';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: 'paddding',
+  behavior: 'height',
 })`
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   background: #000;
   opacity: 0.6;
   width: 80%;
-  height: 80%;
+  height: 500px;
   margin: auto;
   border: 0;
   border-radius: 10px;
@@ -45,7 +45,7 @@ export const SignLinkText = styled.Text`
 
 export const RegionField = styled.View`
   padding: 0 15px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 25, 92, 0.5);
   margin-bottom: 10px;
   height: 50px;
   border-radius: 4px;

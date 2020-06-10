@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Picker } from '@react-native-community/picker';
-import Background from '~/components/Background';
+import { ImageBackground } from 'react-native';
+import SignInPic from '~/assets/games.jpg';
 
 import {
   Container,
@@ -37,7 +38,10 @@ export default function SignIn({ navigation }) {
   }
 
   return (
-    <Background>
+    <ImageBackground
+      source={SignInPic}
+      style={{ flex: 1, resizeMode: 'cover' }}
+    >
       <Container>
         <Form>
           <FormInput
@@ -114,6 +118,6 @@ export default function SignIn({ navigation }) {
           <SignLinkText>Already have a login!</SignLinkText>
         </SignLink>
       </Container>
-    </Background>
+    </ImageBackground>
   );
 }
