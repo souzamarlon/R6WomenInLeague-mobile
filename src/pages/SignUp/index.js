@@ -114,6 +114,7 @@ export default function SignIn({ navigation }) {
             SIGN UP
           </SubmitButton>
         </Form>
+
         <SignLink onPress={() => navigation.navigate('SignIn')}>
           <SignLinkText>Already have a login!</SignLinkText>
         </SignLink>

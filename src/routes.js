@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
 
 Icon.loadFont();
 const Stack = createStackNavigator();
@@ -34,7 +35,7 @@ function DashboardStack({ navigation }) {
     >
       <Stack.Screen
         name="Dashboard"
-        component={() => {}}
+        component={Dashboard}
         // options={{ headerShown: false, headerTransparent: true }}
       />
     </Stack.Navigator>
