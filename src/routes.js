@@ -67,7 +67,7 @@ export default function createRouter(isSigned = false) {
     >
       <Tabs.Screen
         name="Dashboard"
-        component={DashboardStack}
+        component={Dashboard}
         options={{
           tabBarLabel: 'Dashboard',
           tabBarIcon: ({ color }) => (
