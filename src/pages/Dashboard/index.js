@@ -9,10 +9,8 @@ import { Container, Content, CardList } from './styles';
 
 export default function Dashboard() {
   const [refreshList, setRefreshList] = useState(false);
-
   const [r6Data, setR6Data] = useState([]);
   const [friendAdded, setFriendAdded] = useState([]);
-
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -55,12 +53,12 @@ export default function Dashboard() {
             data={r6Data}
             refreshing={refreshList}
             onRefresh={loadPage}
+            numColumns={1}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
-              <Card data={data} onPress={() => {}} />
+              <Card dataR6={data} onPress={() => {}} />
             )}
           />
-          <Card />
         </Content>
       </Container>
     </ImageBackground>

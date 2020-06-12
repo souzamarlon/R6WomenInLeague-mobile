@@ -15,17 +15,19 @@ export const Container = styled.View`
   -webkit-transition: all 0.3s; */
   /* transition: all 0.3s; */
 `;
-export const Avatar = styled.Image`
+export const ImageArea = styled.View`
   position: relative;
-  img {
-    width: 170px;
-    height: 175px;
-    border-radius: 100%;
-  }
-  img.americaRank {
-    position: absolute;
-    margin-left: 120px;
-    width: 70px;
-    height: 70px;
-  }
+`;
+
+export const Avatar = styled.Image`
+  width: 170px;
+  height: 175px;
+  border-radius: 100px;
+`;
+
+export const RankImg = styled.Image`
+  position: absolute;
+  margin-left: 120px;
+  width: 70px;
+  height: 70px;
 `;
