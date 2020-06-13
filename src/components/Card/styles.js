@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  width: 195px;
+  width: 199px;
   height: 387px;
   background: rgba(10, 10, 10, 0.5);
   /* box-sizing: border-box; */
@@ -25,9 +25,92 @@ export const Avatar = styled.Image`
   border-radius: 100px;
 `;
 
-export const RankImg = styled.Image`
-  position: absolute;
-  margin-left: 120px;
-  width: 70px;
-  height: 70px;
+export const R6Name = styled.Text`
+  padding-top: 5px;
+  color: #fff;
+  font-size: 14px;
+`;
+
+export const R6Rank = styled.Text`
+  padding-top: 5px;
+  color: #fff;
+  font-size: 14px;
+`;
+
+export const R6PlayStyle = styled.Text`
+  padding-top: 5px;
+  color: rgba(250, 248, 248, 0.56);
+  font-size: 12px;
+`;
+export const R6Info = styled.Text`
+  padding-top: 5px;
+  color: rgba(250, 248, 248, 0.56);
+  font-size: 12px;
+`;
+
+export const R6Ranked = styled.Text`
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px auto;
+  padding-top: 2px;
+  color: #fff;
+  width: 81px;
+  height: 16.34px;
+  opacity: ${(props) => (props.status_ranked ? 1 : 0.1)};
+  background-color: ${(props) =>
+    props.status_ranked ? 'rgba(78, 253, 34, 0.42)' : 'rgba(0, 0, 0, 0.8)'};
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const R6Comp = styled.Text`
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px auto;
+  padding-top: 2px;
+  width: 95px;
+  height: 16.34px;
+  color: #fff;
+  opacity: ${(props) => (props.status_competition ? 1 : 0.1)};
+  background-color: ${(props) =>
+    props.status_competition
+      ? 'rgba(78, 253, 34, 0.42)'
+      : 'rgba(0, 0, 0, 0.8)'};
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const R6Times = styled.Text`
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px auto;
+  padding-top: 2px;
+  width: 81px;
+  height: 16.34px;
+  color: #fff;
+  background-color: rgba(24, 29, 163, 0.42);
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const R6Region = styled.Text`
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px auto;
+  /* padding-top: 2px; */
+  width: 81px;
+  height: 16.34px;
+  color: #fff;
+  background-color: rgba(255, 25, 34, 0.33);
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

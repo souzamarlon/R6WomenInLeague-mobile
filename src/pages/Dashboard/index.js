@@ -28,6 +28,7 @@ export default function Dashboard() {
         }
 
         setR6Data(response.data);
+        setRefreshList(false);
       } catch (err) {
         const { error } = err.response.data;
 
@@ -36,7 +37,7 @@ export default function Dashboard() {
     }
 
     SearchFun();
-  }, [page]);
+  }, [page, refreshList]);
 
   async function loadPage() {
     setRefreshList(true);
