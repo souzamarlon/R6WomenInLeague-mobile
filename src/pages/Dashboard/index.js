@@ -56,9 +56,7 @@ export default function Dashboard() {
             onRefresh={loadPage}
             numColumns={1}
             keyExtractor={(item) => String(item.id)}
-            renderItem={({ item: data }) => (
-              <Card dataR6={data} onPress={() => {}} />
-            )}
+            renderItem={({ item: data }) => <Card dataR6={data} />}
           />
         </Content>
       </Container>

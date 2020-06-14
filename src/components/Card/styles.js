@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
-export const Container = styled.View`
+export const Container = styled(RectButton)`
   width: 199px;
   height: 387px;
   background: rgba(10, 10, 10, 0.5);
@@ -15,6 +16,7 @@ export const Container = styled.View`
   -webkit-transition: all 0.3s; */
   /* transition: all 0.3s; */
 `;
+
 export const ImageArea = styled.View`
   position: relative;
 `;
