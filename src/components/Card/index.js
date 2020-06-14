@@ -19,7 +19,7 @@ import {
   R6Region,
 } from './styles';
 
-export default function Card({ dataR6 }) {
+export default function Card({ dataR6, friendAdded }) {
   const [playerData, setPlayerData] = useState([]);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function Card({ dataR6 }) {
         }
       } catch (err) {
         const { error } = err.response.data;
-        console.tron.log(error);
+        // console.tron.log(error);
       }
     }
 
@@ -90,9 +90,7 @@ export default function Card({ dataR6 }) {
     try {
       await api.post(`/friendship/${id}`);
 
-      // TODO
       // friendAdded(id);
-
       Alert.alert(`Added ${dataR6.name} successfully`);
     } catch (err) {
       Alert.alert('Failure to add your friend!');
@@ -113,7 +111,9 @@ export default function Card({ dataR6 }) {
       </ImageArea>
 
       <R6Name>{dataR6.name}</R6Name>
-      <R6Rank>{playerData.rank_text}</R6Rank>
+      <R6Rank>
+        {playerData.rank_text ? playerData.rank_text : 'Unranked'}
+      </R6Rank>
       <R6PlayStyle>{`Play Style is ${dataR6.play_style}.`}</R6PlayStyle>
       <R6Info>Available to play:</R6Info>
       <R6Ranked status_ranked={dataR6.ranked}>RANKED</R6Ranked>

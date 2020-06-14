@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, ImageBackground } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Card from '~/components/Card';
 import Background from '~/assets/background.jpg';
 
 import api from '~/services/api';
-import { Container, Content, CardList } from './styles';
+import { Container, Content, CardList, ButtonSwitchPages } from './styles';
 
 export default function Dashboard() {
   const [refreshList, setRefreshList] = useState(false);
@@ -43,12 +44,27 @@ export default function Dashboard() {
     setRefreshList(true);
   }
 
+  function handlePage(action) {
+    // const count = action === 'back' ? page - 1 : page + 1;
+    setPage(action === 'back' ? page - 1 : page + 1);
+  }
+
   return (
     <ImageBackground
       source={Background}
       style={{ flex: 1, resizeMode: 'cover' }}
     >
       <Container>
+        <ButtonSwitchPages
+          onPress={() => handlePage('back')}
+          enabled={!(page <= 1)}
+        >
+          <Icon
+            name="keyboard-arrow-left"
+            size={34}
+            color="rgba(255, 255, 255, 0.6)"
+          />
+        </ButtonSwitchPages>
         <Content>
           <CardList
             data={r6Data}
@@ -59,6 +75,14 @@ export default function Dashboard() {
             renderItem={({ item: data }) => <Card dataR6={data} />}
           />
         </Content>
+
+        <ButtonSwitchPages onPress={() => handlePage('next')}>
+          <Icon
+            name="keyboard-arrow-right"
+            size={34}
+            color="rgba(255, 255, 255, 0.6)"
+          />
+        </ButtonSwitchPages>
       </Container>
     </ImageBackground>
   );
