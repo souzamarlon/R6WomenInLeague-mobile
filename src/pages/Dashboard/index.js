@@ -71,12 +71,16 @@ export default function Dashboard() {
             refreshing={refreshList}
             onRefresh={loadPage}
             numColumns={1}
+            // horizontal
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => <Card dataR6={data} />}
           />
         </Content>
 
-        <ButtonSwitchPages onPress={() => handlePage('next')}>
+        <ButtonSwitchPages
+          onPress={() => handlePage('next')}
+          enabled={r6Data.length >= 1}
+        >
           <Icon
             name="keyboard-arrow-right"
             size={34}

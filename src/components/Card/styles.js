@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
-  width: 199px;
+  width: 220px;
   height: 387px;
   background: rgba(10, 10, 10, 0.5);
   /* box-sizing: border-box; */
@@ -25,6 +25,7 @@ export const Avatar = styled.Image`
   width: 170px;
   height: 175px;
   border-radius: 100px;
+  margin-top: 4px;
 `;
 
 export const R6Name = styled.Text`
