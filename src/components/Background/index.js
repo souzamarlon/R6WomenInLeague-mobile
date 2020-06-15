@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-import SignInPic from '~/assets/games.jpg';
+import BackgroundImage from '~/assets/background.jpg';
 
-export default styled.ImageBackground.attrs({ source: SignInPic })`
+export default styled.ImageBackground.attrs({ source: BackgroundImage })`
   flex: 1;
 `;

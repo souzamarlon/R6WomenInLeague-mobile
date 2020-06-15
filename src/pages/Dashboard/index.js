@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, ImageBackground } from 'react-native';
+import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Background from '~/components/Background';
 
 import Card from '~/components/Card';
-import Background from '~/assets/background.jpg';
 
 import api from '~/services/api';
 import { Container, Content, CardList, ButtonSwitchPages } from './styles';
@@ -50,10 +50,7 @@ export default function Dashboard() {
   }
 
   return (
-    <ImageBackground
-      source={Background}
-      style={{ flex: 1, resizeMode: 'cover' }}
-    >
+    <Background>
       <Container>
         <ButtonSwitchPages
           onPress={() => handlePage('back')}
@@ -88,6 +85,6 @@ export default function Dashboard() {
           />
         </ButtonSwitchPages>
       </Container>
-    </ImageBackground>
+    </Background>
   );
 }
