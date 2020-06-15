@@ -24,7 +24,7 @@ export default function Search() {
             competition: playerData.competition,
             times: playerData.times,
             page,
-            per_page: 14,
+            per_page: 1,
           },
         });
 
@@ -38,6 +38,8 @@ export default function Search() {
 
     SearchFun();
   }, [playerData, page]);
+
+  console.tron.log(playerData);
 
   return (
     <Background>
