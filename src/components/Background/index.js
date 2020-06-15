@@ -1,14 +1,7 @@
-import React from 'react';
-import { ImageBackground } from 'react-native';
+import styled from 'styled-components/native';
+
 import SignInPic from '~/assets/games.jpg';
 
-// import { Container } from './styles';
-
-export default function Background() {
-  return (
-    <ImageBackground
-      source={SignInPic}
-      style={{ flex: 1, resizeMode: 'cover' }}
-    />
-  );
-}
+export default styled.ImageBackground.attrs({ source: SignInPic })`
+  flex: 1;
+`;

@@ -60,7 +60,7 @@ export default function Dashboard() {
           enabled={!(page <= 1)}
         >
           <Icon
-            name="keyboard-arrow-left"
+            name="navigate-before"
             size={34}
             color="rgba(255, 255, 255, 0.6)"
           />
@@ -82,7 +82,7 @@ export default function Dashboard() {
           enabled={r6Data.length >= 1}
         >
           <Icon
-            name="keyboard-arrow-right"
+            name="navigate-next"
             size={34}
             color="rgba(255, 255, 255, 0.6)"
           />

@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
+import Search from './pages/Search';
 
 Icon.loadFont();
 const Stack = createStackNavigator();
@@ -72,6 +73,16 @@ export default function createRouter(isSigned = false) {
           tabBarLabel: 'Dashboard',
           tabBarIcon: ({ color }) => (
             <Icon name="reorder" size={20} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Searh"
+        component={Search}
+        options={{
+          tabBarLabel: 'Searh',
+          tabBarIcon: ({ color }) => (
+            <Icon name="search" size={20} color={color} />
           ),
         }}
       />
