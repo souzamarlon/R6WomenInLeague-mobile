@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Card from '~/components/Card';
 import SearchTool from '~/components/SearchTool';
 import Background from '~/components/Background';
 
 import api from '~/services/api';
 
-import { Container, Content, CardList } from './styles';
+import { Container, Content, CardList, ButtonSwitchPages } from './styles';
 
 export default function Search() {
   const [playerData, setPlayerData] = useState([]);
@@ -39,11 +40,26 @@ export default function Search() {
     SearchFun();
   }, [playerData, page]);
 
+  function handlePage(action) {
+    // const count = action === 'back' ? page - 1 : page + 1;
+    setPage(action === 'back' ? page - 1 : page + 1);
+  }
+
   console.tron.log(playerData);
 
   return (
     <Background>
       <Container>
+        <ButtonSwitchPages
+          onPress={() => handlePage('back')}
+          enabled={!(page <= 1)}
+        >
+          <Icon
+            name="navigate-before"
+            size={34}
+            color="rgba(255, 255, 255, 0.6)"
+          />
+        </ButtonSwitchPages>
         <Content isAlign={!!playerData.length}>
           {playerData.length !== 0 ? (
             <CardList
@@ -59,6 +75,17 @@ export default function Search() {
             <SearchTool onChange={setPlayerData} />
           )}
         </Content>
+
+        <ButtonSwitchPages
+          onPress={() => handlePage('next')}
+          enabled={r6Data.length >= 1}
+        >
+          <Icon
+            name="navigate-next"
+            size={34}
+            color="rgba(255, 255, 255, 0.6)"
+          />
+        </ButtonSwitchPages>
       </Container>
     </Background>
   );

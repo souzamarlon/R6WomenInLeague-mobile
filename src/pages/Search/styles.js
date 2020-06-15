@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   margin: auto;
@@ -15,7 +16,7 @@ export const Content = styled.View`
   height: 410px;
   display: flex;
   justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
-  /* align-items: center; */
+  align-items: center;
   background: rgba(27, 25, 28, 0.74);
   border-radius: 8px;
 `;
@@ -28,3 +29,9 @@ export const CardList = styled.FlatList.attrs({
     // marginRight: 20,
   },
 })``;
+
+export const ButtonSwitchPages = styled(RectButton)`
+  background: transparent;
+  color: #fff;
+  border: 0;
+`;
