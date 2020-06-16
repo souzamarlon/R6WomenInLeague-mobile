@@ -7,15 +7,31 @@ export const Container = styled.View`
   /* height: 80vh; */
   border: 0;
   align-items: center;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: center;
+`;
+
+export const Menu = styled.View`
+  flex-direction: row;
+`;
+
+export const MyFriendsButton = styled(RectButton)`
+  width: 100px;
+  height: 20px;
+  background-color: #000;
+`;
+
+export const FriendRequests = styled(RectButton)`
+  width: 100px;
+  height: 20px;
+  background-color: #fff;
 `;
 
 export const Content = styled.View`
   width: 90%;
   display: flex;
   border-radius: 8px;
-  height: 410px;
+  height: 430px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;

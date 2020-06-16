@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useSelector } from 'react-redux';
-import Card from '~/components/Card';
+import Card from '~/components/CardFriends';
 import Background from '~/components/Background';
 
 import api from '~/services/api';
 
-import { Container, Content, CardList } from './styles';
+import {
+  Container,
+  Content,
+  CardList,
+  Menu,
+  MyFriendsButton,
+  FriendRequests,
+} from './styles';
 
 export default function Friends() {
   const [r6Data, setR6Data] = useState([]);
@@ -55,6 +62,10 @@ export default function Friends() {
   return (
     <Background>
       <Container>
+        <Menu>
+          <MyFriendsButton onPress={() => setMyFriends(true) || setPage(1)} />
+          <FriendRequests onPress={() => setMyFriends(false) || setPage(1)} />
+        </Menu>
         <Content>
           <CardList
             data={r6Data}
@@ -66,6 +77,7 @@ export default function Friends() {
             renderItem={({ item: data }) => (
               <Card
                 dataR6={data.user_friend === id ? data.user : data.friend}
+                allData={data}
               />
             )}
           />

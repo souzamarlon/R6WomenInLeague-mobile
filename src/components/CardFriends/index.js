@@ -10,6 +10,8 @@ import {
   ImageArea,
   Avatar,
   R6Name,
+  UplayName,
+  DiscordUser,
   R6Rank,
   R6PlayStyle,
   R6Info,
@@ -19,7 +21,7 @@ import {
   R6Region,
 } from './styles';
 
-export default function Card({ dataR6, friendAdded }) {
+export default function CardFriends({ dataR6, friendAdded, allData }) {
   const [playerData, setPlayerData] = useState([]);
 
   useEffect(() => {
@@ -86,20 +88,8 @@ export default function Card({ dataR6, friendAdded }) {
     getPlayerData();
   }, [dataR6]);
 
-  async function addFriend(id) {
-    try {
-      await api.post(`/friendship/${id}`);
-
-      // friendAdded(id);
-      Alert.alert(`Added ${dataR6.name} successfully`);
-    } catch (err) {
-      Alert.alert('Failure to add your friend!');
-    }
-  }
-  console.tron.log(dataR6);
-
   return (
-    <Container onPress={() => addFriend(dataR6.id)}>
+    <Container onPress={() => {}}>
       <ImageArea>
         <Avatar
           source={{
@@ -109,17 +99,39 @@ export default function Card({ dataR6, friendAdded }) {
           }}
         />
       </ImageArea>
+      {allData.accepted ? (
+        <>
+          <R6Name>{dataR6.name}</R6Name>
+          <UplayName>{dataR6.uplay}</UplayName>
 
-      <R6Name>{dataR6.name}</R6Name>
-      <R6Rank>
-        {playerData.rank_text ? playerData.rank_text : 'Unranked'}
-      </R6Rank>
-      <R6PlayStyle>{`Play Style is ${dataR6.play_style}.`}</R6PlayStyle>
-      <R6Info>Available to play:</R6Info>
-      <R6Ranked status_ranked={dataR6.ranked}>RANKED</R6Ranked>
-      <R6Comp status_competition={dataR6.competition}>CHAMPIONSHIP</R6Comp>
-      <R6Times>{dataR6.times}</R6Times>
-      <R6Region>{dataR6.region}</R6Region>
+          {dataR6.discord_user ? (
+            <DiscordUser>{dataR6.discord_user}</DiscordUser>
+          ) : null}
+
+          <R6Rank>
+            {playerData.rank_text ? playerData.rank_text : 'Unranked'}
+          </R6Rank>
+          <R6PlayStyle>{`Play Style is ${dataR6.play_style}.`}</R6PlayStyle>
+          <R6Info>Available to play:</R6Info>
+          <R6Ranked status_ranked={dataR6.ranked}>RANKED</R6Ranked>
+          <R6Comp status_competition={dataR6.competition}>CHAMPIONSHIP</R6Comp>
+          <R6Times>{dataR6.times}</R6Times>
+          <R6Region>{dataR6.region}</R6Region>
+        </>
+      ) : (
+        <>
+          <R6Name>{dataR6.name}</R6Name>
+          <R6Rank>
+            {playerData.rank_text ? playerData.rank_text : 'Unranked'}
+          </R6Rank>
+          <R6PlayStyle>{`Play Style is ${dataR6.play_style}.`}</R6PlayStyle>
+          <R6Info>Available to play:</R6Info>
+          <R6Ranked status_ranked={dataR6.ranked}>RANKED</R6Ranked>
+          <R6Comp status_competition={dataR6.competition}>CHAMPIONSHIP</R6Comp>
+          <R6Times>{dataR6.times}</R6Times>
+          <R6Region>{dataR6.region}</R6Region>
+        </>
+      )}
     </Container>
   );
 }
