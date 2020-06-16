@@ -18,7 +18,7 @@ const Tabs = createBottomTabNavigator();
 function DashboardStack({ navigation }) {
   return (
     <Stack.Navigator
-      initialRouteName="Dashboard"
+      initialRouteName="Search"
       headerMode="screen"
       screenOptions={{
         headerTransparent: true,
@@ -35,8 +35,8 @@ function DashboardStack({ navigation }) {
       }}
     >
       <Stack.Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="Search"
+        component={Search}
         // options={{ headerShown: false, headerTransparent: true }}
       />
     </Stack.Navigator>

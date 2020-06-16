@@ -7,9 +7,16 @@ import Background from '~/components/Background';
 
 import api from '~/services/api';
 
-import { Container, Content, CardList, ButtonSwitchPages } from './styles';
+import {
+  Container,
+  Content,
+  CardList,
+  ButtonSwitchPages,
+  ResetButton,
+  ResetText,
+} from './styles';
 
-export default function Search() {
+export default function Search({ navigation }) {
   const [playerData, setPlayerData] = useState([]);
   const [r6Data, setR6Data] = useState([]);
   const [page, setPage] = useState(1);
@@ -45,7 +52,9 @@ export default function Search() {
     setPage(action === 'back' ? page - 1 : page + 1);
   }
 
-  console.tron.log(playerData);
+  function searchAgain() {
+    setPlayerData([]);
+  }
 
   return (
     <Background>
@@ -87,6 +96,13 @@ export default function Search() {
           />
         </ButtonSwitchPages>
       </Container>
+
+      <ResetButton
+        enabled={playerData.length !== 0}
+        onPress={() => searchAgain()}
+      >
+        <ResetText>Search again?</ResetText>
+      </ResetButton>
     </Background>
   );
 }

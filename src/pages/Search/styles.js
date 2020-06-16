@@ -35,3 +35,19 @@ export const ButtonSwitchPages = styled(RectButton)`
   color: #fff;
   border: 0;
 `;
+
+export const ResetButton = styled(RectButton)`
+  /* background: rgba(227, 23, 60, 0.46); */
+  border: 1px solid #dddddd;
+  width: 100px;
+  height: 20px;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+`;
+
+export const ResetText = styled.Text`
+  color: #fff;
+  font-size: 14px;
+  margin: auto;
+`;
