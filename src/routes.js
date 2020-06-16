@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
+import Friends from './pages/Friends';
 
 Icon.loadFont();
 const Stack = createStackNavigator();
@@ -77,12 +78,22 @@ export default function createRouter(isSigned = false) {
         }}
       />
       <Tabs.Screen
-        name="Searh"
+        name="Search"
         component={Search}
         options={{
-          tabBarLabel: 'Searh',
+          tabBarLabel: 'Search',
           tabBarIcon: ({ color }) => (
             <Icon name="search" size={20} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Friends"
+        component={Friends}
+        options={{
+          tabBarLabel: 'Friends',
+          tabBarIcon: ({ color }) => (
+            <Icon name="person-add" size={20} color={color} />
           ),
         }}
       />
