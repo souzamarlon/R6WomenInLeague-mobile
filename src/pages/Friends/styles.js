@@ -69,6 +69,10 @@ export const CardList = styled.FlatList.attrs({
   },
 })``;
 
+export const AlignSwitchButton = styled.View`
+  flex-direction: row;
+`;
+
 export const ButtonSwitchPages = styled(RectButton)`
   background: transparent;
   color: #fff;

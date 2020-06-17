@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Card from '~/components/CardFriends';
 import Background from '~/components/Background';
 
@@ -15,6 +16,8 @@ import {
   FriendRequests,
   MenuText,
   Line,
+  AlignSwitchButton,
+  ButtonSwitchPages,
 } from './styles';
 
 export default function Friends() {
@@ -94,6 +97,29 @@ export default function Friends() {
             )}
           />
         </Content>
+        <AlignSwitchButton>
+          <ButtonSwitchPages
+            onPress={() => handlePage('back')}
+            enabled={!(page <= 1)}
+          >
+            <Icon
+              name="navigate-before"
+              size={34}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+          </ButtonSwitchPages>
+
+          <ButtonSwitchPages
+            onPress={() => handlePage('next')}
+            enabled={r6Data.length >= 1}
+          >
+            <Icon
+              name="navigate-next"
+              size={34}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+          </ButtonSwitchPages>
+        </AlignSwitchButton>
       </Container>
     </Background>
   );
