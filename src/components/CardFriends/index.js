@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, Text } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Modal, { ModalButton, ModalContent } from 'react-native-modals';
 
 import PropTypes from 'prop-types';
 
@@ -11,6 +12,8 @@ import {
   Container,
   ImageArea,
   Avatar,
+  ButtonForModal,
+  ModalLine,
   R6Name,
   UplayName,
   DiscordUser,
@@ -28,6 +31,7 @@ import {
 
 export default function CardFriends({ dataR6, friendAdded, allData }) {
   const [playerData, setPlayerData] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     async function getPlayerData() {
@@ -142,6 +146,23 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
           }}
         />
       </ImageArea>
+      <ButtonForModal title="Show Modal" onPress={() => setVisible(true)}>
+        <Icon name="ellipsis-h" size={18} color="#DDD" />
+      </ButtonForModal>
+      <Modal
+        visible={visible}
+        onTouchOutside={() => setVisible(false)}
+        width={200}
+      >
+        <ModalContent>
+          <ModalButton text="Remove" onPress={() => removeFriend(allData.id)} />
+          <ModalLine />
+          <ModalButton
+            text="Report a fake"
+            onPress={() => reportFake(allData.id)}
+          />
+        </ModalContent>
+      </Modal>
       {allData.accepted ? (
         <>
           <R6Name>{dataR6.name}</R6Name>

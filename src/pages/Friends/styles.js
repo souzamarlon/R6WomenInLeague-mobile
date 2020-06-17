@@ -54,7 +54,7 @@ export const Content = styled.View`
   width: 90%;
   display: flex;
   border-radius: 8px;
-  height: 430px;
+  height: 435px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;

@@ -3,7 +3,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
   width: 220px;
-  height: 410px;
+  height: 420px;
   background: rgba(10, 10, 10, 0.5);
   /* box-sizing: border-box; */
   box-shadow: 5px 5px 8px rgb(10, 10, 10);
@@ -28,8 +28,18 @@ export const Avatar = styled.Image`
   margin-top: 4px;
 `;
 
+export const ButtonForModal = styled(RectButton)`
+  margin-left: auto;
+  padding-right: 10px;
+`;
+
+export const ModalLine = styled.View`
+  width: 100%;
+  height: 2px;
+  background-color: #999;
+`;
+
 export const R6Name = styled.Text`
-  padding-top: 5px;
   color: #fff;
   font-size: 14px;
 `;
