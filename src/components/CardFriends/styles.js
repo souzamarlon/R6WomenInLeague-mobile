@@ -35,8 +35,8 @@ export const ButtonForModal = styled(RectButton)`
 
 export const ModalLine = styled.View`
   width: 100%;
-  height: 2px;
-  background-color: #999;
+  height: 1px;
+  background-color: #ddd;
 `;
 
 export const R6Name = styled.Text`

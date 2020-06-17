@@ -152,13 +152,18 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
       <Modal
         visible={visible}
         onTouchOutside={() => setVisible(false)}
-        width={200}
+        width={120}
       >
         <ModalContent>
-          <ModalButton text="Remove" onPress={() => removeFriend(allData.id)} />
+          <ModalButton
+            text="Remove"
+            textStyle={{ fontSize: 14, color: '#000' }}
+            onPress={() => removeFriend(allData.id)}
+          />
           <ModalLine />
           <ModalButton
             text="Report a fake"
+            textStyle={{ fontSize: 14, color: '#000' }}
             onPress={() => reportFake(allData.id)}
           />
         </ModalContent>
