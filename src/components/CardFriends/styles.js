@@ -66,6 +66,30 @@ export const R6Info = styled.Text`
   font-size: 12px;
 `;
 
+export const AddRemove = styled.View`
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  /* margin: 0 5px; */
+`;
+
+export const AddRemoveButton = styled(RectButton)`
+  border-radius: 50px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.1);
+  /* box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.5); */
+  width: 45px;
+  height: 45px;
+  padding-top: 2px;
+  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const AvailableInfo = styled.View`
+  flex-direction: column;
+`;
+
 export const R6Ranked = styled.Text`
   font-size: 10px;
   font-weight: bold;
