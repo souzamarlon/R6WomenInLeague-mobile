@@ -93,6 +93,30 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
     getPlayerData();
   }, [dataR6]);
 
+  async function removeFriend(id) {
+    try {
+      await api.delete(`/friendship/${id}`);
+
+      Alert.alert(`${dataR6.name} was removed successfully.`);
+      // history.go('/friends');
+    } catch (err) {
+      Alert.alert('Failure to remove your friend!');
+    }
+  }
+
+  async function acceptFriend(id) {
+    try {
+      await api.put(`/friendship/${id}`, { accepted: true });
+
+      Alert.alert(`Accepted ${dataR6.name} successfully`);
+      // history.go('/friends');
+    } catch (err) {
+      Alert.alert('Failure to accept your friend!');
+    }
+  }
+
+  console.tron.log(allData);
+
   return (
     <Container onPress={() => {}}>
       <ImageArea>
@@ -132,7 +156,7 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
           <R6PlayStyle>{`Play Style is ${dataR6.play_style}.`}</R6PlayStyle>
           <R6Info>Available to play:</R6Info>
           <AddRemove>
-            <AddRemoveButton>
+            <AddRemoveButton onPress={() => removeFriend(allData.id)}>
               <Icon name="thumbs-down" size={32} color="#F90733" />
             </AddRemoveButton>
             <AvailableInfo>
@@ -144,7 +168,7 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
               <R6Region>{dataR6.region}</R6Region>
             </AvailableInfo>
             {allData.user.id === dataR6.id ? (
-              <AddRemoveButton>
+              <AddRemoveButton onPress={() => acceptFriend(allData.id)}>
                 <Icon name="heart" size={32} color="#29F907" />
               </AddRemoveButton>
             ) : (

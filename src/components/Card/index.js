@@ -96,7 +96,7 @@ export default function Card({ dataR6, friendAdded }) {
       Alert.alert('Failure to add your friend!');
     }
   }
-  console.tron.log(dataR6);
+  // console.tron.log(dataR6);
 
   return (
     <Container onPress={() => addFriend(dataR6.id)}>
