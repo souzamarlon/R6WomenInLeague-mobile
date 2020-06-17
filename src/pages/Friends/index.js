@@ -13,13 +13,14 @@ import {
   Menu,
   MyFriendsButton,
   FriendRequests,
+  MenuText,
+  Line,
 } from './styles';
 
 export default function Friends() {
   const [r6Data, setR6Data] = useState([]);
   const [page, setPage] = useState(1);
   const [myFriends, setMyFriends] = useState(true);
-  const [request, setRequest] = useState(false);
 
   const { id } = useSelector((state) => state.user.profile);
 
@@ -52,7 +53,7 @@ export default function Friends() {
     }
 
     SearchFun();
-  }, [page, myFriends, request]);
+  }, [page, myFriends]);
 
   function handlePage(action) {
     // const count = action === 'back' ? page - 1 : page + 1;
@@ -63,8 +64,19 @@ export default function Friends() {
     <Background>
       <Container>
         <Menu>
-          <MyFriendsButton onPress={() => setMyFriends(true) || setPage(1)} />
-          <FriendRequests onPress={() => setMyFriends(false) || setPage(1)} />
+          <MyFriendsButton
+            onPress={() => setMyFriends(true) || setPage(1)}
+            active={myFriends}
+          >
+            <MenuText>My Friends</MenuText>
+          </MyFriendsButton>
+          <Line />
+          <FriendRequests
+            onPress={() => setMyFriends(false) || setPage(1)}
+            active={!myFriends}
+          >
+            <MenuText>Friend Requests</MenuText>
+          </FriendRequests>
         </Menu>
         <Content>
           <CardList

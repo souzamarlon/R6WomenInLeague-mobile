@@ -115,7 +115,21 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
     }
   }
 
-  console.tron.log(allData);
+  async function reportFake(id) {
+    try {
+      await api.put(`/friendship/${id}`, {
+        expose_fake: true,
+        id_reported: dataR6.id,
+      });
+
+      Alert.alert(`${dataR6.name} was reported successfully.`);
+      // history.go('/friends');
+    } catch (err) {
+      Alert.alert('Failure to remove your friend!');
+    }
+  }
+
+  // console.tron.log(allData);
 
   return (
     <Container onPress={() => {}}>
