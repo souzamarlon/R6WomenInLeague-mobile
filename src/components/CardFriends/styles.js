@@ -44,34 +44,40 @@ export const R6Name = styled.Text`
   font-size: 14px;
 `;
 
+export const AlignFields = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const UplayName = styled.Text`
   font-size: 10px;
-  /* color: rgba(255, 25, 248, 0.66); */
   color: rgba(255, 255, 25, 0.66);
-  padding-top: 2px;
-  background: rgba(10, 10, 10, 0.2);
-`;
-export const DiscordUser = styled.Text`
-  font-size: 10px;
-  /* color: rgba(255, 25, 248, 0.66); */
-  color: rgba(255, 255, 25, 0.66);
-  padding-top: 2px;
+  padding-top: 3px;
+  padding-left: 2px;
   background: rgba(10, 10, 10, 0.2);
 `;
 
+export const DiscordUser = styled.Text`
+  font-size: 10px;
+  color: rgba(255, 255, 25, 0.66);
+  background: rgba(10, 10, 10, 0.2);
+  padding-top: 3px;
+  padding-left: 2px;
+`;
+
 export const R6Rank = styled.Text`
-  padding-top: 5px;
+  padding-top: 3px;
   color: #fff;
   font-size: 14px;
 `;
 
 export const R6PlayStyle = styled.Text`
-  padding-top: 5px;
+  padding-top: 3px;
   color: rgba(250, 248, 248, 0.56);
   font-size: 12px;
 `;
 export const R6Info = styled.Text`
-  padding-top: 5px;
+  padding-top: 3px;
   color: rgba(250, 248, 248, 0.56);
   font-size: 12px;
 `;
@@ -104,7 +110,7 @@ export const R6Ranked = styled.Text`
   font-size: 10px;
   font-weight: bold;
   text-align: center;
-  margin: 5px auto;
+  margin: 4px auto;
   padding-top: 2px;
   color: #fff;
   width: 81px;
@@ -121,7 +127,7 @@ export const R6Comp = styled.Text`
   font-size: 10px;
   font-weight: bold;
   text-align: center;
-  margin: 5px auto;
+  margin: 3px auto;
   padding-top: 2px;
   width: 95px;
   height: 16.34px;
@@ -140,7 +146,7 @@ export const R6Times = styled.Text`
   font-size: 10px;
   font-weight: bold;
   text-align: center;
-  margin: 5px auto;
+  margin: 3px auto;
   padding-top: 2px;
   width: 81px;
   height: 16.34px;
@@ -155,7 +161,7 @@ export const R6Region = styled.Text`
   font-size: 10px;
   font-weight: bold;
   text-align: center;
-  margin: 5px auto;
+  margin: 3px auto;
   /* padding-top: 2px; */
   width: 81px;
   height: 16.34px;

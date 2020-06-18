@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Alert, Text } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 import Modal, { ModalButton, ModalContent } from 'react-native-modals';
 
 import PropTypes from 'prop-types';
@@ -15,6 +17,7 @@ import {
   ButtonForModal,
   ModalLine,
   R6Name,
+  AlignFields,
   UplayName,
   DiscordUser,
   R6Rank,
@@ -171,10 +174,17 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
       {allData.accepted ? (
         <>
           <R6Name>{dataR6.name}</R6Name>
-          <UplayName>{dataR6.uplay}</UplayName>
+
+          <AlignFields>
+            <Icon name="gamepad" size={18} color="#fff" />
+            <UplayName>{dataR6.uplay}</UplayName>
+          </AlignFields>
 
           {dataR6.discord_user ? (
-            <DiscordUser>{dataR6.discord_user}</DiscordUser>
+            <AlignFields>
+              <FontAwesome5 name="discord" size={18} color="#fff" />
+              <DiscordUser>{dataR6.discord_user}</DiscordUser>
+            </AlignFields>
           ) : null}
 
           <R6Rank>
