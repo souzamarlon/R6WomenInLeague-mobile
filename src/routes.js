@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import Friends from './pages/Friends';
+import Profile from './pages/Profile';
 
 Icon.loadFont();
 const Stack = createStackNavigator();
@@ -93,7 +94,17 @@ export default function createRouter(isSigned = false) {
         options={{
           tabBarLabel: 'Friends',
           tabBarIcon: ({ color }) => (
-            <Icon name="person-add" size={20} color={color} />
+            <Icon name="people" size={20} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color }) => (
+            <Icon name="face" size={20} color={color} />
           ),
         }}
       />
