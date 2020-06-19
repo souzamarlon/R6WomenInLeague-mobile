@@ -4,14 +4,18 @@ import Button from '~/components/Button';
 
 import Input from '~/components/Input';
 
-export const Container = styled.KeyboardAvoidingView.attrs({
-  enabled: Platform.OS === 'ios',
-  behavior: 'padding',
+export const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  // justifyContent: 'center',
+  // alignItems: 'center',
+  contentContainerStyle: {
+    // paddingTop: 10,
+    // marginLeft: 20,
+    // marginRight: 20,
+  },
 })`
   display: flex;
-  justify-content: center;
   align-self: center;
-  align-items: center;
   padding: 0 30px;
   background: rgba(0, 0, 0, 0.6);
   width: 80%;
@@ -32,7 +36,7 @@ export const SubmitButton = styled(Button)`
   margin-top: 5px;
 `;
 
-export const RegionField = styled.View`
+export const PickerFields = styled.View`
   padding: 0 15px;
   background-color: rgba(255, 25, 92, 0.5);
   margin-bottom: 10px;
