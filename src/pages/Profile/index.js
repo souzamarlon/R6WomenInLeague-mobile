@@ -47,19 +47,8 @@ export default function Profile() {
   const uplayRef = useRef();
   const discord_userRef = useRef();
 
-  async function handleSubmit({ confirmPassword }) {
+  async function handleSubmit() {
     try {
-      const uplayExists = await api.get('/stats', {
-        params: {
-          username: uplay,
-          platform: 'pc',
-          type: 'generic',
-        },
-      });
-      if (!uplayExists) {
-        throw new Error('Whoops!');
-      }
-
       const { competition } = selectField;
       const { ranked } = selectField;
       const { play_style } = selectField;
@@ -83,7 +72,7 @@ export default function Profile() {
 
       dispatch(updateProfileRequest(data));
     } catch (err) {
-      Alert.alert('Uplay nickname not found!');
+      Alert.alert('Failure, it is not possible to update your profile!');
     }
   }
 
@@ -91,6 +80,7 @@ export default function Profile() {
     dispatch(signOut());
   }
 
+  console.tron.log(selectField);
   return (
     <Background>
       <Container>
@@ -151,7 +141,7 @@ export default function Profile() {
                 fontSize: 11,
               }}
               onValueChange={(itemValue, itemIndex) =>
-                selectField({
+                setSelectField({
                   ...selectField,
                   play_style: itemValue,
                 })
@@ -180,8 +170,8 @@ export default function Profile() {
                 })
               }
             >
-              <Picker.Item label="Yes" value="true" />
-              <Picker.Item label="No" value="false" />
+              <Picker.Item label="Yes" value />
+              <Picker.Item label="No" value={false} />
             </Picker>
           </PickerFields>
 
@@ -202,12 +192,17 @@ export default function Profile() {
                 })
               }
             >
-              <Picker.Item label="Yes" value="true" />
-              <Picker.Item label="No" value="false" />
+              <Picker.Item label="Yes" value />
+              <Picker.Item label="No" value={false} />
             </Picker>
           </PickerFields>
           <PickerFields>
-            <PickerTexts>Time:</PickerTexts>
+            <Icon
+              name="access-time"
+              size={20}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+
             <Picker
               selectedValue={selectField.times}
               style={{

@@ -18,6 +18,18 @@ export function* updateProfile({ payload }) {
       ...rest
     } = payload.data;
 
+    const uplayExists = yield call(api.get, '/stats', {
+      params: {
+        username: uplay,
+        platform: 'pc',
+        type: 'generic',
+      },
+    });
+
+    if (!uplayExists) {
+      Alert.alert('Uplay nickname not found!');
+    }
+
     const profile = {
       name,
       email,
@@ -35,7 +47,7 @@ export function* updateProfile({ payload }) {
     Alert.alert('Your profile was successfully updated!');
     yield put(updateProfileSuccess(response.data));
   } catch (err) {
-    Alert.alert('Error to update your profile!');
+    Alert.alert('Error', 'Error to update your profile!');
 
     yield put(updateProfileFailure());
   }
