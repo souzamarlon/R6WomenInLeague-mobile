@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Picker } from '@react-native-community/picker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '~/services/api';
+
+import Background from '~/components/Background';
+
+import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import {
@@ -13,6 +17,7 @@ import {
   PickerFields,
   PickerTexts,
   SubmitButton,
+  LogoutButton,
 } from './styles';
 
 export default function Profile() {
@@ -82,205 +87,212 @@ export default function Profile() {
     }
   }
 
+  function handleLogout() {
+    dispatch(signOut());
+  }
+
   return (
-    <Container>
-      <Form>
-        <FormInput
-          icon="person-outline"
-          autoCorrect={false}
-          autoCapitalize="none"
-          placeholder="Eliza Ash Cohen"
-          returnKeyType="next"
-          onSubmitEditing={() => emailRef.current.focus()}
-          value={name}
-          onChangeText={setName}
-        />
-        <FormInput
-          icon="mail-outline"
-          keyboardType="email-address"
-          ref={emailRef}
-          autoCorrect={false}
-          autoCapitalize="none"
-          placeholder="exemplo@email.com"
-          returnKeyType="next"
-          onSubmitEditing={() => uplayRef.current.focus()}
-          value={email}
-          onChangeText={setEmail}
-        />
+    <Background>
+      <Container>
+        <Form>
+          <FormInput
+            icon="person-outline"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Eliza Ash Cohen"
+            returnKeyType="next"
+            onSubmitEditing={() => emailRef.current.focus()}
+            value={name}
+            onChangeText={setName}
+          />
+          <FormInput
+            icon="mail-outline"
+            keyboardType="email-address"
+            ref={emailRef}
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="exemplo@email.com"
+            returnKeyType="next"
+            onSubmitEditing={() => uplayRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
+          />
 
-        <FormInput
-          icon="videogame-asset"
-          autoCorrect={false}
-          autoCapitalize="none"
-          ref={uplayRef}
-          returnKeyType="next"
-          onSubmitEditing={() => discord_userRef.current.focus()}
-          value={uplay}
-          onChangeText={setUplay}
-        />
+          <FormInput
+            icon="videogame-asset"
+            autoCorrect={false}
+            autoCapitalize="none"
+            ref={uplayRef}
+            returnKeyType="next"
+            onSubmitEditing={() => discord_userRef.current.focus()}
+            value={uplay}
+            onChangeText={setUplay}
+          />
 
-        <FormInput
-          icon="videogame-asset"
-          autoCorrect={false}
-          autoCapitalize="none"
-          ref={discord_userRef}
-          returnKeyType="next"
-          onSubmitEditing={() => passwordRef.current.focus()}
-          value={discord_user}
-          onChangeText={setDiscord_user}
-        />
-        <PickerFields>
-          <PickerTexts>Play Style:</PickerTexts>
-          <Picker
-            selectedValue={selectField.play_style}
-            style={{
-              height: 50,
-              width: 140,
-              color: '#ddd',
-              marginLeft: 8,
-              fontSize: 11,
-            }}
-            onValueChange={(itemValue, itemIndex) =>
-              selectField({
-                ...selectField,
-                play_style: itemValue,
-              })
-            }
-          >
-            <Picker.Item label="Support" value="Support" />
-            <Picker.Item label="Entry fragger" value="Entry fragger" />
-            <Picker.Item label="Versatile" value="Versatile" />
-          </Picker>
-        </PickerFields>
+          <FormInput
+            icon="videogame-asset"
+            autoCorrect={false}
+            autoCapitalize="none"
+            ref={discord_userRef}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            value={discord_user}
+            onChangeText={setDiscord_user}
+          />
+          <PickerFields>
+            <PickerTexts>Play Style:</PickerTexts>
+            <Picker
+              selectedValue={selectField.play_style}
+              style={{
+                height: 50,
+                width: 140,
+                color: '#ddd',
+                marginLeft: 8,
+                fontSize: 11,
+              }}
+              onValueChange={(itemValue, itemIndex) =>
+                selectField({
+                  ...selectField,
+                  play_style: itemValue,
+                })
+              }
+            >
+              <Picker.Item label="Support" value="Support" />
+              <Picker.Item label="Entry fragger" value="Entry fragger" />
+              <Picker.Item label="Versatile" value="Versatile" />
+            </Picker>
+          </PickerFields>
 
-        <PickerFields>
-          <PickerTexts>Championship:</PickerTexts>
-          <Picker
-            selectedValue={selectField.competition}
-            style={{
-              height: 50,
-              width: 115,
-              color: '#ddd',
-              marginLeft: 8,
-            }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectField({
-                ...selectField,
-                competition: itemValue,
-              })
-            }
-          >
-            <Picker.Item label="Yes" value="true" />
-            <Picker.Item label="No" value="false" />
-          </Picker>
-        </PickerFields>
+          <PickerFields>
+            <PickerTexts>Championship:</PickerTexts>
+            <Picker
+              selectedValue={selectField.competition}
+              style={{
+                height: 50,
+                width: 115,
+                color: '#ddd',
+                marginLeft: 8,
+              }}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectField({
+                  ...selectField,
+                  competition: itemValue,
+                })
+              }
+            >
+              <Picker.Item label="Yes" value="true" />
+              <Picker.Item label="No" value="false" />
+            </Picker>
+          </PickerFields>
 
-        <PickerFields>
-          <PickerTexts>Ranked:</PickerTexts>
-          <Picker
-            selectedValue={selectField.ranked}
-            style={{
-              height: 50,
-              width: 150,
-              color: '#ddd',
-              marginLeft: 8,
-            }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectField({
-                ...selectField,
-                ranked: itemValue,
-              })
-            }
-          >
-            <Picker.Item label="Yes" value="true" />
-            <Picker.Item label="No" value="false" />
-          </Picker>
-        </PickerFields>
-        <PickerFields>
-          <PickerTexts>Time:</PickerTexts>
-          <Picker
-            selectedValue={selectField.times}
-            style={{
-              height: 50,
-              width: 165,
-              color: '#ddd',
-              marginLeft: 8,
-            }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectField({
-                ...selectField,
-                times: itemValue,
-              })
-            }
-          >
-            <Picker.Item label="Morning" value="Morning" />
-            <Picker.Item label="Afternoon" value="Afternoon" />
-            <Picker.Item label="Night" value="Night" />
-            <Picker.Item label="All Day" value="All Day" />
-          </Picker>
-        </PickerFields>
+          <PickerFields>
+            <PickerTexts>Ranked:</PickerTexts>
+            <Picker
+              selectedValue={selectField.ranked}
+              style={{
+                height: 50,
+                width: 150,
+                color: '#ddd',
+                marginLeft: 8,
+              }}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectField({
+                  ...selectField,
+                  ranked: itemValue,
+                })
+              }
+            >
+              <Picker.Item label="Yes" value="true" />
+              <Picker.Item label="No" value="false" />
+            </Picker>
+          </PickerFields>
+          <PickerFields>
+            <PickerTexts>Time:</PickerTexts>
+            <Picker
+              selectedValue={selectField.times}
+              style={{
+                height: 50,
+                width: 165,
+                color: '#ddd',
+                marginLeft: 8,
+              }}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectField({
+                  ...selectField,
+                  times: itemValue,
+                })
+              }
+            >
+              <Picker.Item label="Morning" value="Morning" />
+              <Picker.Item label="Afternoon" value="Afternoon" />
+              <Picker.Item label="Night" value="Night" />
+              <Picker.Item label="All Day" value="All Day" />
+            </Picker>
+          </PickerFields>
 
-        <PickerFields>
-          <Icon name="place" size={20} color="rgba(255, 255, 255, 0.6)" />
-          <Picker
-            selectedValue={selectField.region}
-            style={{
-              height: 50,
-              width: 180,
-              color: '#ddd',
-              marginLeft: 8,
-            }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectField({
-                ...selectField,
-                region: itemValue,
-              })
-            }
-          >
-            <Picker.Item label="Africa" value="Africa" />
-            <Picker.Item label="Asia" value="Asia" />
-            <Picker.Item label="Europe" value="Europe" />
-            <Picker.Item label="North America" value="North America" />
-            <Picker.Item label="Oceania" value="Oceania" />
-            <Picker.Item label="South America" value="South America" />
-          </Picker>
-        </PickerFields>
+          <PickerFields>
+            <Icon name="place" size={20} color="rgba(255, 255, 255, 0.6)" />
+            <Picker
+              selectedValue={selectField.region}
+              style={{
+                height: 50,
+                width: 180,
+                color: '#ddd',
+                marginLeft: 8,
+              }}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectField({
+                  ...selectField,
+                  region: itemValue,
+                })
+              }
+            >
+              <Picker.Item label="Africa" value="Africa" />
+              <Picker.Item label="Asia" value="Asia" />
+              <Picker.Item label="Europe" value="Europe" />
+              <Picker.Item label="North America" value="North America" />
+              <Picker.Item label="Oceania" value="Oceania" />
+              <Picker.Item label="South America" value="South America" />
+            </Picker>
+          </PickerFields>
 
-        <FormInput
-          icon="lock-outline"
-          secureTextEntry
-          placeholder="Your current password"
-          ref={oldPasswordRef}
-          returnKeyType="send"
-          onSubmitEditing={() => passwordRef.current.focus()}
-          value={oldPassword}
-          onChangeText={setOldPassword}
-        />
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Your current password"
+            ref={oldPasswordRef}
+            returnKeyType="send"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            value={oldPassword}
+            onChangeText={setOldPassword}
+          />
 
-        <FormInput
-          icon="lock-outline"
-          secureTextEntry
-          placeholder="New password"
-          ref={passwordRef}
-          returnKeyType="send"
-          onSubmitEditing={() => confirmPasswordRef.current.focus()}
-          value={password}
-          onChangeText={setPassword}
-        />
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="New password"
+            ref={passwordRef}
+            returnKeyType="send"
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
+            value={password}
+            onChangeText={setPassword}
+          />
 
-        <FormInput
-          icon="lock-outline"
-          secureTextEntry
-          placeholder="Confirm password"
-          ref={confirmPasswordRef}
-          returnKeyType="send"
-          onSubmitEditing={handleSubmit}
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-        />
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Confirm password"
+            ref={confirmPasswordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
 
-        <SubmitButton onPress={handleSubmit}>UPDATE</SubmitButton>
-      </Form>
-    </Container>
+          <SubmitButton onPress={handleSubmit}>UPDATE</SubmitButton>
+          <LogoutButton onPress={handleLogout}>Sair</LogoutButton>
+        </Form>
+      </Container>
+    </Background>
   );
 }

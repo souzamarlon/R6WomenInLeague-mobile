@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
 
@@ -17,7 +16,7 @@ export const Container = styled.ScrollView.attrs({
   display: flex;
   align-self: center;
   padding: 0 30px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(27, 25, 28, 0.74);
   width: 80%;
   height: 500px;
   margin: auto;
@@ -31,10 +30,6 @@ export const Form = styled.View`
 `;
 
 export const FormInput = styled(Input)``;
-
-export const SubmitButton = styled(Button)`
-  margin-top: 5px;
-`;
 
 export const PickerFields = styled.View`
   padding: 0 15px;
@@ -50,4 +45,14 @@ export const PickerFields = styled.View`
 export const PickerTexts = styled.Text`
   font-size: 12px;
   color: #fff;
+`;
+
+export const SubmitButton = styled(Button)`
+  margin-top: 4px;
+  margin-bottom: 15px;
+`;
+
+export const LogoutButton = styled(Button)`
+  background: #f64c75;
+  margin-bottom: 15px;
 `;
