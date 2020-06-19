@@ -46,3 +46,8 @@ export const PickerFields = styled.View`
   flex-direction: row;
   align-items: center;
 `;
+
+export const PickerTexts = styled.Text`
+  font-size: 12px;
+  color: #fff;
+`;

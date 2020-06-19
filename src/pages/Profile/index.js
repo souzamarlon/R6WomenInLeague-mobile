@@ -11,6 +11,7 @@ import {
   Form,
   FormInput,
   PickerFields,
+  PickerTexts,
   SubmitButton,
 } from './styles';
 
@@ -28,18 +29,15 @@ export default function Profile() {
   const [email, setEmail] = useState(profile.email);
   const [uplay, setUplay] = useState(profile.uplay);
   const [discord_user, setDiscord_user] = useState(profile.discord_user);
-
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [region, setRegion] = useState(profile.region);
 
   const dispatch = useDispatch();
 
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
   const oldPasswordRef = useRef();
-
   const emailRef = useRef();
   const uplayRef = useRef();
   const discord_userRef = useRef();
@@ -60,6 +58,7 @@ export default function Profile() {
       const { competition } = selectField;
       const { ranked } = selectField;
       const { play_style } = selectField;
+      const { region } = selectField;
       const { times } = selectField;
 
       // TODO - Check if it does not have another account using the same Email or Uplay Nickname.
@@ -131,11 +130,12 @@ export default function Profile() {
           onChangeText={setDiscord_user}
         />
         <PickerFields>
+          <PickerTexts>Play Style:</PickerTexts>
           <Picker
             selectedValue={selectField.play_style}
             style={{
               height: 50,
-              width: 170,
+              width: 140,
               color: '#ddd',
               marginLeft: 8,
               fontSize: 11,
@@ -154,11 +154,12 @@ export default function Profile() {
         </PickerFields>
 
         <PickerFields>
+          <PickerTexts>Championship:</PickerTexts>
           <Picker
             selectedValue={selectField.competition}
             style={{
               height: 50,
-              width: 170,
+              width: 115,
               color: '#ddd',
               marginLeft: 8,
             }}
@@ -175,11 +176,12 @@ export default function Profile() {
         </PickerFields>
 
         <PickerFields>
+          <PickerTexts>Ranked:</PickerTexts>
           <Picker
             selectedValue={selectField.ranked}
             style={{
               height: 50,
-              width: 170,
+              width: 150,
               color: '#ddd',
               marginLeft: 8,
             }}
@@ -195,11 +197,12 @@ export default function Profile() {
           </Picker>
         </PickerFields>
         <PickerFields>
+          <PickerTexts>Time:</PickerTexts>
           <Picker
             selectedValue={selectField.times}
             style={{
               height: 50,
-              width: 170,
+              width: 165,
               color: '#ddd',
               marginLeft: 8,
             }}
@@ -220,14 +223,19 @@ export default function Profile() {
         <PickerFields>
           <Icon name="place" size={20} color="rgba(255, 255, 255, 0.6)" />
           <Picker
-            selectedValue={region}
+            selectedValue={selectField.region}
             style={{
               height: 50,
-              width: 170,
+              width: 180,
               color: '#ddd',
               marginLeft: 8,
             }}
-            onValueChange={(itemValue, itemIndex) => setRegion(itemValue)}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectField({
+                ...selectField,
+                region: itemValue,
+              })
+            }
           >
             <Picker.Item label="Africa" value="Africa" />
             <Picker.Item label="Asia" value="Asia" />
