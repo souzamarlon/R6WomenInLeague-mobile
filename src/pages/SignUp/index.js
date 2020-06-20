@@ -35,6 +35,7 @@ export default function SignIn({ navigation }) {
 
   async function handleSubmit() {
     dispatch(signUpRequest(name, email, uplay, region, password));
+    navigation.navigate('SignIn');
   }
 
   return (

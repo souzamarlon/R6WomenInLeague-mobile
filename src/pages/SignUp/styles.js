@@ -15,7 +15,7 @@ export const Container = styled.ScrollView.attrs({
   width: 80%;
   height: 500px;
   margin-top: 70px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border: 0;
   border-radius: 10px;
 `;
