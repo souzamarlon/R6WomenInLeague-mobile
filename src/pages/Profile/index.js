@@ -3,7 +3,6 @@ import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Picker } from '@react-native-community/picker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import api from '~/services/api';
 
 import Background from '~/components/Background';
 
@@ -22,6 +21,7 @@ import {
 
 export default function Profile() {
   const profile = useSelector((state) => state.user.profile);
+  const loading = useSelector((state) => state.user.loading);
 
   const [selectField, setSelectField] = useState({
     competition: profile.competition,
@@ -135,10 +135,10 @@ export default function Profile() {
               selectedValue={selectField.play_style}
               style={{
                 height: 50,
-                width: 140,
+                width: 156,
                 color: '#ddd',
-                marginLeft: 8,
-                fontSize: 11,
+                marginLeft: 1,
+                fontWeights: 'normal',
               }}
               onValueChange={(itemValue, itemIndex) =>
                 setSelectField({
@@ -161,7 +161,7 @@ export default function Profile() {
                 height: 50,
                 width: 115,
                 color: '#ddd',
-                marginLeft: 8,
+                marginLeft: 5,
               }}
               onValueChange={(itemValue, itemIndex) =>
                 setSelectField({
@@ -183,7 +183,7 @@ export default function Profile() {
                 height: 50,
                 width: 150,
                 color: '#ddd',
-                marginLeft: 8,
+                marginLeft: 5,
               }}
               onValueChange={(itemValue, itemIndex) =>
                 setSelectField({
@@ -209,7 +209,7 @@ export default function Profile() {
                 height: 50,
                 width: 165,
                 color: '#ddd',
-                marginLeft: 8,
+                marginLeft: 5,
               }}
               onValueChange={(itemValue, itemIndex) =>
                 setSelectField({
@@ -233,7 +233,7 @@ export default function Profile() {
                 height: 50,
                 width: 180,
                 color: '#ddd',
-                marginLeft: 8,
+                marginLeft: 5,
               }}
               onValueChange={(itemValue, itemIndex) =>
                 setSelectField({
@@ -284,7 +284,9 @@ export default function Profile() {
             onChangeText={setConfirmPassword}
           />
 
-          <SubmitButton onPress={handleSubmit}>UPDATE</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            UPDATE
+          </SubmitButton>
           <LogoutButton onPress={handleLogout}>Sair</LogoutButton>
         </Form>
       </Container>

@@ -43,8 +43,9 @@ export const PickerFields = styled.View`
 `;
 
 export const PickerTexts = styled.Text`
-  font-size: 12px;
-  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 export const SubmitButton = styled(Button)`
