@@ -38,7 +38,10 @@ export default function SignIn({ navigation }) {
   }
 
   return (
-    <ImageBackground source={SignInPic} style={{ flex: 1 }}>
+    <ImageBackground
+      source={SignInPic}
+      style={{ flex: 1, resizeMode: 'cover' }}
+    >
       <Container>
         <Form>
           <FormInput

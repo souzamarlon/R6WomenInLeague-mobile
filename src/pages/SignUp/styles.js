@@ -8,22 +8,21 @@ export const Container = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
 })`
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   align-self: center;
   padding: 0 30px;
   background: rgba(0, 0, 0, 0.6);
+
   width: 80%;
   height: 500px;
-  /* margin: auto; */
   margin-top: 70px;
+  margin-bottom: 20px;
   border: 0;
   border-radius: 10px;
 `;
 
 export const Form = styled.View`
   align-self: stretch;
-  margin-top: 20px;
+  margin-top: 25px;
 `;
 
 export const FormInput = styled(Input)``;
