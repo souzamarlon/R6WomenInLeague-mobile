@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, Text } from 'react-native';
+import { Alert } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -105,7 +105,8 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
       await api.delete(`/friendship/${id}`);
 
       Alert.alert(`${dataR6.name} was removed successfully.`);
-      // history.go('/friends');
+
+      friendAdded(true);
     } catch (err) {
       Alert.alert('Failure to remove your friend!');
     }
@@ -116,7 +117,8 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
       await api.put(`/friendship/${id}`, { accepted: true });
 
       Alert.alert(`Accepted ${dataR6.name} successfully`);
-      // history.go('/friends');
+
+      friendAdded(true);
     } catch (err) {
       Alert.alert('Failure to accept your friend!');
     }
@@ -130,7 +132,8 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
       });
 
       Alert.alert(`${dataR6.name} was reported successfully.`);
-      // history.go('/friends');
+
+      friendAdded(true);
     } catch (err) {
       Alert.alert('Failure to remove your friend!');
     }

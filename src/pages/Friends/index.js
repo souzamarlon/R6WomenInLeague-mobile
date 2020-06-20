@@ -25,6 +25,8 @@ export default function Friends() {
   const [r6Data, setR6Data] = useState([]);
   const [page, setPage] = useState(1);
   const [myFriends, setMyFriends] = useState(true);
+  const [isAdded, setIsAdded] = useState(false);
+  const [refreshList, setRefreshList] = useState(false);
 
   const { id } = useSelector((state) => state.user.profile);
 
@@ -51,17 +53,24 @@ export default function Friends() {
         });
 
         setR6Data(response.data);
+        setIsAdded(false);
       } catch (err) {
         Alert.alert('Failure!');
       }
     }
 
     SearchFun();
-  }, [page, myFriends]);
+
+    setRefreshList(false);
+  }, [page, myFriends, isAdded, refreshList]);
 
   function handlePage(action) {
     // const count = action === 'back' ? page - 1 : page + 1;
     setPage(action === 'back' ? page - 1 : page + 1);
+  }
+
+  async function loadPage() {
+    setRefreshList(true);
   }
 
   return (
@@ -85,13 +94,14 @@ export default function Friends() {
         <Content>
           <CardList
             data={r6Data}
-            // refreshing={refreshList}
-            // onRefresh={loadPage}
+            refreshing={refreshList}
+            onRefresh={loadPage}
             // numColumns={1}
             horizontal
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
+                friendAdded={(value) => setIsAdded(value)}
                 dataR6={data.user_friend === id ? data.user : data.friend}
                 allData={data}
               />

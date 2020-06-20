@@ -90,7 +90,7 @@ export default function Card({ dataR6, friendAdded }) {
     try {
       await api.post(`/friendship/${id}`);
 
-      // friendAdded(id);
+      friendAdded(id);
       Alert.alert(`Added ${dataR6.name} successfully`);
     } catch (err) {
       Alert.alert('Failure to add your friend!');

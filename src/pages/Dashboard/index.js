@@ -20,7 +20,7 @@ export default function Dashboard() {
         const response = await api.get(`users`, {
           params: {
             page,
-            per_page: 1,
+            per_page: 14,
           },
         });
 
@@ -67,10 +67,15 @@ export default function Dashboard() {
             data={r6Data}
             refreshing={refreshList}
             onRefresh={loadPage}
-            numColumns={1}
-            // horizontal
+            // numColumns={1}
+            horizontal
             keyExtractor={(item) => String(item.id)}
-            renderItem={({ item: data }) => <Card dataR6={data} />}
+            renderItem={({ item: data }) => (
+              <Card
+                dataR6={data}
+                friendAdded={(value) => setFriendAdded(value)}
+              />
+            )}
           />
         </Content>
 
