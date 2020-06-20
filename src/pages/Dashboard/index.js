@@ -49,6 +49,17 @@ export default function Dashboard() {
     setPage(action === 'back' ? page - 1 : page + 1);
   }
 
+  useEffect(() => {
+    if (friendAdded > 0) {
+      const newList = r6Data.filter((value) => {
+        return value.id === friendAdded ? null : value;
+      });
+
+      setR6Data(newList);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [friendAdded]);
+
   return (
     <Background>
       <Container>
