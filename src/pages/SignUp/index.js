@@ -38,10 +38,7 @@ export default function SignIn({ navigation }) {
   }
 
   return (
-    <ImageBackground
-      source={SignInPic}
-      style={{ flex: 1, resizeMode: 'cover' }}
-    >
+    <ImageBackground source={SignInPic} style={{ flex: 1 }}>
       <Container>
         <Form>
           <FormInput
@@ -113,11 +110,10 @@ export default function SignIn({ navigation }) {
           <SubmitButton loading={loading} onPress={handleSubmit}>
             SIGN UP
           </SubmitButton>
+          <SignLink onPress={() => navigation.navigate('SignIn')}>
+            <SignLinkText>Already have a login!</SignLinkText>
+          </SignLink>
         </Form>
-
-        <SignLink onPress={() => navigation.navigate('SignIn')}>
-          <SignLinkText>Already have a login!</SignLinkText>
-        </SignLink>
       </Container>
     </ImageBackground>
   );

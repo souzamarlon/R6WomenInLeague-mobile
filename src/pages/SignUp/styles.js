@@ -4,19 +4,19 @@ import styled from 'styled-components/native';
 import Input from '~/components/Input';
 import Button from '~/components/Button';
 
-export const Container = styled.KeyboardAvoidingView.attrs({
-  enabled: Platform.OS === 'ios',
-  behavior: 'padding',
+export const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
 })`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   align-self: center;
-  align-items: center;
   padding: 0 30px;
   background: rgba(0, 0, 0, 0.6);
   width: 80%;
   height: 500px;
-  margin: auto;
+  /* margin: auto; */
+  margin-top: 70px;
   border: 0;
   border-radius: 10px;
 `;
@@ -40,6 +40,7 @@ export const SignLinkText = styled.Text`
   color: #fff;
   font-weight: bold;
   font-size: 16px;
+  margin: auto;
 `;
 
 export const RegionField = styled.View`
