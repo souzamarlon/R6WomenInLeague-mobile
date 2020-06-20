@@ -287,7 +287,7 @@ export default function Profile() {
           <SubmitButton loading={loading} onPress={handleSubmit}>
             UPDATE
           </SubmitButton>
-          <LogoutButton onPress={handleLogout}>Sair</LogoutButton>
+          <LogoutButton onPress={handleLogout}>Sign out</LogoutButton>
         </Form>
       </Container>
     </Background>

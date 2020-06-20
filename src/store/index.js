@@ -18,7 +18,7 @@ const middlewares = [sagaMiddleware];
 const store = createStore(persistReducer(rootReducer), middlewares);
 const persistor = persistStore(store);
 
-// api.registerInterceptWithStore(store);
+api.registerInterceptWithStore(store);
 
 sagaMiddleware.run(rootSaga);
 
