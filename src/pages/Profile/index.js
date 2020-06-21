@@ -80,7 +80,7 @@ export default function Profile() {
     dispatch(signOut());
   }
 
-  console.tron.log(selectField);
+  // console.tron.log(selectField);
   return (
     <Background>
       <Container>
@@ -140,7 +140,7 @@ export default function Profile() {
                 marginLeft: 1,
                 fontWeights: 'normal',
               }}
-              onValueChange={(itemValue, itemIndex) =>
+              onValueChange={(itemValue) =>
                 setSelectField({
                   ...selectField,
                   play_style: itemValue,
@@ -163,7 +163,7 @@ export default function Profile() {
                 color: '#ddd',
                 marginLeft: 5,
               }}
-              onValueChange={(itemValue, itemIndex) =>
+              onValueChange={(itemValue) =>
                 setSelectField({
                   ...selectField,
                   competition: itemValue,
@@ -185,7 +185,7 @@ export default function Profile() {
                 color: '#ddd',
                 marginLeft: 5,
               }}
-              onValueChange={(itemValue, itemIndex) =>
+              onValueChange={(itemValue) =>
                 setSelectField({
                   ...selectField,
                   ranked: itemValue,
@@ -211,7 +211,7 @@ export default function Profile() {
                 color: '#ddd',
                 marginLeft: 5,
               }}
-              onValueChange={(itemValue, itemIndex) =>
+              onValueChange={(itemValue) =>
                 setSelectField({
                   ...selectField,
                   times: itemValue,
@@ -235,7 +235,7 @@ export default function Profile() {
                 color: '#ddd',
                 marginLeft: 5,
               }}
-              onValueChange={(itemValue, itemIndex) =>
+              onValueChange={(itemValue) =>
                 setSelectField({
                   ...selectField,
                   region: itemValue,

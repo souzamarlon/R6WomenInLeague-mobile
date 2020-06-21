@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import Card from '~/components/Card';
 import SearchTool from '~/components/SearchTool';
 import Background from '~/components/Background';
@@ -16,7 +17,7 @@ import {
   ResetText,
 } from './styles';
 
-export default function Search({ navigation }) {
+export default function Search() {
   const [playerData, setPlayerData] = useState([]);
   const [r6Data, setR6Data] = useState([]);
   const [page, setPage] = useState(1);
@@ -63,6 +64,17 @@ export default function Search({ navigation }) {
     setRefreshList(true);
   }
 
+  useEffect(() => {
+    if (friendAdded > 0) {
+      const newList = r6Data.filter((value) => {
+        return value.id === friendAdded ? null : value;
+      });
+
+      setR6Data(newList);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [friendAdded]);
+
   return (
     <Background>
       <Container>
@@ -86,7 +98,10 @@ export default function Search({ navigation }) {
               horizontal
               keyExtractor={(item) => String(item.id)}
               renderItem={({ item: data }) => (
-                <Card dataR6={data} friendAdded />
+                <Card
+                  dataR6={data}
+                  friendAdded={(value) => setFriendAdded(value)}
+                />
               )}
             />
           ) : (

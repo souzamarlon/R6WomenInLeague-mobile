@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ImageBackground } from 'react-native';
+import PropTypes from 'prop-types';
 
 import SignInPic from '~/assets/games.jpg';
 
@@ -82,3 +83,9 @@ export default function SignIn({ navigation }) {
     </ImageBackground>
   );
 }
+
+SignIn.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
