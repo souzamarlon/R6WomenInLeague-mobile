@@ -47,7 +47,7 @@ export default function SearchTool({ onChange }) {
               marginLeft: 8,
               fontSize: 11,
             }}
-            onValueChange={(itemValue, itemIndex) =>
+            onValueChange={(itemValue) =>
               setSelectOptions({
                 ...selectOptions,
                 play_style: itemValue,
@@ -70,7 +70,7 @@ export default function SearchTool({ onChange }) {
               color: '#ddd',
               marginLeft: 8,
             }}
-            onValueChange={(itemValue, itemIndex) =>
+            onValueChange={(itemValue) =>
               setSelectOptions({
                 ...selectOptions,
                 competition: itemValue,
@@ -92,7 +92,7 @@ export default function SearchTool({ onChange }) {
               color: '#ddd',
               marginLeft: 8,
             }}
-            onValueChange={(itemValue, itemIndex) =>
+            onValueChange={(itemValue) =>
               setSelectOptions({
                 ...selectOptions,
                 ranked: itemValue,
@@ -116,7 +116,7 @@ export default function SearchTool({ onChange }) {
               color: '#ddd',
               marginLeft: 8,
             }}
-            onValueChange={(itemValue, itemIndex) =>
+            onValueChange={(itemValue) =>
               setSelectOptions({
                 ...selectOptions,
                 times: itemValue,

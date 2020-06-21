@@ -21,6 +21,7 @@ export default function Search({ navigation }) {
   const [r6Data, setR6Data] = useState([]);
   const [page, setPage] = useState(1);
   const [friendAdded, setFriendAdded] = useState([]);
+  const [refreshList, setRefreshList] = useState(false);
 
   useEffect(() => {
     async function SearchFun() {
@@ -32,7 +33,7 @@ export default function Search({ navigation }) {
             competition: playerData.competition,
             times: playerData.times,
             page,
-            per_page: 1,
+            per_page: 14,
           },
         });
 
@@ -41,6 +42,7 @@ export default function Search({ navigation }) {
         }
 
         setR6Data(response.data);
+        setRefreshList(false);
       }
     }
 
@@ -54,6 +56,11 @@ export default function Search({ navigation }) {
 
   function searchAgain() {
     setPlayerData([]);
+    setR6Data([]);
+  }
+
+  async function loadPage() {
+    setRefreshList(true);
   }
 
   return (
@@ -73,12 +80,14 @@ export default function Search({ navigation }) {
           {playerData.length !== 0 ? (
             <CardList
               data={r6Data}
-              // refreshing={refreshList}
-              // onRefresh={loadPage}
-              numColumns={1}
-              // horizontal
+              refreshing={refreshList}
+              onRefresh={loadPage}
+              // numColumns={1}
+              horizontal
               keyExtractor={(item) => String(item.id)}
-              renderItem={({ item: data }) => <Card dataR6={data} />}
+              renderItem={({ item: data }) => (
+                <Card dataR6={data} friendAdded />
+              )}
             />
           ) : (
             <SearchTool onChange={setPlayerData} />
