@@ -78,7 +78,15 @@ export default function Dashboard() {
             refreshing={refreshList}
             onRefresh={loadPage}
             // numColumns={1}
+            // removeClippedSubviews
             horizontal
+            initialNumToRender={14}
+            pagingEnabled
+            // getItemLayout={(data, index) => ({
+            //   length: 387,
+            //   offset: 387 * index,
+            //   index,
+            // })}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
