@@ -235,3 +235,20 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
     </Container>
   );
 }
+
+CardFriends.propTypes = {
+  dataR6: PropTypes.shape({
+    uplay: PropTypes.string,
+    region: PropTypes.string,
+    name: PropTypes.string,
+    id: PropTypes.number,
+    play_style: PropTypes.string,
+    ranked: PropTypes.bool,
+    competition: PropTypes.bool,
+    times: PropTypes.string,
+  }).isRequired,
+  allData: PropTypes.shape({
+    accepted: PropTypes.bool,
+    discord_user: PropTypes.string,
+  }).isRequired,
+};
