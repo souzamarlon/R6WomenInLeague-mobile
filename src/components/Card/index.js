@@ -78,7 +78,7 @@ export default function Card({ dataR6, friendAdded }) {
           }
         }
       } catch (err) {
-        const { error } = err.response.data;
+        // const { error } = err.response.data;
         // console.tron.log(error);
       }
     }
@@ -123,3 +123,17 @@ export default function Card({ dataR6, friendAdded }) {
     </Container>
   );
 }
+
+Card.propTypes = {
+  dataR6: PropTypes.shape({
+    uplay: PropTypes.string,
+    region: PropTypes.string,
+    name: PropTypes.string,
+    id: PropTypes.number,
+    play_style: PropTypes.string,
+    ranked: PropTypes.bool,
+    competition: PropTypes.bool,
+    times: PropTypes.string,
+  }).isRequired,
+  friendAdded: PropTypes.number.isRequired,
+};
