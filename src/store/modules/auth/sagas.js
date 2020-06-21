@@ -19,13 +19,11 @@ export function* signIn({ payload }) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
-
-    // history.push('/dashboard');
   } catch (err) {
-    yield put(signFailure());
+    // const { error } = err.response.data;
+    // Alert.alert(`Authentication failure!`);
 
-    const { error } = err.response.data;
-    Alert.alert(`Authentication failure!, ${error}`);
+    yield put(signFailure());
   }
 }
 

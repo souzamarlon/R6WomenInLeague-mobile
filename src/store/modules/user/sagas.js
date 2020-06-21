@@ -47,7 +47,8 @@ export function* updateProfile({ payload }) {
     Alert.alert('Your profile was successfully updated!');
     yield put(updateProfileSuccess(response.data));
   } catch (err) {
-    Alert.alert('Error', 'Error to update your profile!');
+    const { error } = err.response.data;
+    Alert.alert(`Error: ${error}`, 'Error to update your profile!');
     yield put(updateProfileFailure());
   }
 }
