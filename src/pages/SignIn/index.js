@@ -39,7 +39,7 @@ export default function SignIn({ navigation }) {
       style={{ flex: 1, resizeMode: 'cover' }}
     >
       <Container>
-        <AppTitle>R6 WOMEN'S ALLIANCE</AppTitle>
+        <AppTitle>R6 WOMEN&apos;S ALLIANCE</AppTitle>
         <Content>
           <Title>Welcome,</Title>
           <WelcomeText>

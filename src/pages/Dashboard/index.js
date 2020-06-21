@@ -31,8 +31,7 @@ export default function Dashboard() {
         setR6Data(response.data);
         setRefreshList(false);
       } catch (err) {
-        const { error } = err.response.data;
-
+        // const { error } = err.response.data;
         // toast.error(`Failure!, ${error}`);
       }
     }
