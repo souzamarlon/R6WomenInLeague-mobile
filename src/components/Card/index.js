@@ -135,5 +135,4 @@ Card.propTypes = {
     competition: PropTypes.bool,
     times: PropTypes.string,
   }).isRequired,
-  friendAdded: PropTypes.number.isRequired,
 };
