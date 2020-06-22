@@ -26,8 +26,7 @@ export const CardList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     // paddingTop: 10,
-    // marginLeft: 20,
-    // marginRight: 20,
+    paddingLeft: 10,
   },
 })``;
 
