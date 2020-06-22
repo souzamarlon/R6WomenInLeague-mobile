@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Alert, scrollToOffset } from 'react-native';
+import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 
@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [friendAdded, setFriendAdded] = useState([]);
   const [page, setPage] = useState(1);
 
-  const flatListRef = React.useRef();
+  const flatListRef = useRef();
 
   useEffect(() => {
     async function SearchFun() {
@@ -81,17 +81,8 @@ export default function Dashboard() {
             data={r6Data}
             refreshing={refreshList}
             onRefresh={loadPage}
-            // numColumns={1}
-            // removeClippedSubviews
             horizontal
             initialNumToRender={14}
-            // pagingEnabled
-            // getItemLayout={(data, index) => ({
-            //   length: 387,
-            //   offset: 387 * index,
-            //   index,
-            // })}
-
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card

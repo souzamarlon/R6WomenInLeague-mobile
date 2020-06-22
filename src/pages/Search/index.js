@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -24,6 +24,8 @@ export default function Search() {
   const [friendAdded, setFriendAdded] = useState([]);
   const [refreshList, setRefreshList] = useState(false);
 
+  const flatListRef = useRef();
+
   useEffect(() => {
     async function SearchFun() {
       if (playerData.length !== 0) {
@@ -41,6 +43,7 @@ export default function Search() {
         if (response.data.length <= 0) {
           return Alert.alert('Hi, We did not find more users!');
         }
+        flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
 
         setR6Data(response.data);
         setRefreshList(false);
@@ -91,11 +94,13 @@ export default function Search() {
         <Content isAlign={!!playerData.length}>
           {playerData.length !== 0 ? (
             <CardList
+              ref={flatListRef}
               data={r6Data}
               refreshing={refreshList}
               onRefresh={loadPage}
               // numColumns={1}
               horizontal
+              initialNumToRender={14}
               keyExtractor={(item) => String(item.id)}
               renderItem={({ item: data }) => (
                 <Card

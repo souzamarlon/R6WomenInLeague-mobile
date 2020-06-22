@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Alert } from 'react-native';
 import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -30,6 +30,8 @@ export default function Friends() {
 
   const { id } = useSelector((state) => state.user.profile);
 
+  const flatListRef = useRef();
+
   useEffect(() => {
     async function SearchFun() {
       try {
@@ -54,6 +56,7 @@ export default function Friends() {
 
         setR6Data(response.data);
         setIsAdded(false);
+        flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
       } catch (err) {
         Alert.alert('Failure!');
       }
@@ -93,11 +96,13 @@ export default function Friends() {
         </Menu>
         <Content>
           <CardList
+            ref={flatListRef}
             data={r6Data}
             refreshing={refreshList}
             onRefresh={loadPage}
             // numColumns={1}
             horizontal
+            initialNumToRender={14}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
