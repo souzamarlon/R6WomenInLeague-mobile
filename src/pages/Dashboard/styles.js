@@ -3,7 +3,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   margin: auto;
-  width: 80%;
+  width: 85%;
   /* height: 80vh; */
   border: 0;
   align-items: center;
@@ -12,10 +12,10 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-  width: 90%;
+  width: 99%;
   display: flex;
   border-radius: 8px;
-  height: 410px;
+  height: 490px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;
@@ -23,7 +23,7 @@ export const Content = styled.View`
 `;
 
 export const CardList = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     // paddingTop: 10,
     paddingLeft: 10,

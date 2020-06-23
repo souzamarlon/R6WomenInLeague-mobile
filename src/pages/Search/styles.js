@@ -3,7 +3,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   margin: auto;
-  width: 80%;
+  width: 85%;
   /* height: 749px; */
   border: 0;
   align-items: center;
@@ -12,8 +12,8 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-  width: 90%;
-  height: 410px;
+  width: 99%;
+  height: 490px;
   display: flex;
   justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
   align-items: center;

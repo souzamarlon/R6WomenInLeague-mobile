@@ -3,7 +3,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   margin: auto;
-  width: 80%;
+  width: 85%;
   /* height: 80vh; */
   border: 0;
   align-items: center;
@@ -51,10 +51,10 @@ export const MenuText = styled.Text`
 `;
 
 export const Content = styled.View`
-  width: 90%;
+  width: 99%;
   display: flex;
   border-radius: 8px;
-  height: 435px;
+  height: 490px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;

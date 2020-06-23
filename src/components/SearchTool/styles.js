@@ -50,7 +50,7 @@ export const SelectLayout = styled.View`
 `;
 
 export const SubmitButton = styled(RectButton)`
-  margin-top: 10px;
+  margin-top: 50px;
   width: 120px;
   height: 36px;
   background: rgba(5, 250, 88, 0.4);
