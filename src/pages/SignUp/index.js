@@ -9,6 +9,7 @@ import SignInPic from '~/assets/games.jpg';
 
 import {
   Container,
+  AppTitle,
   Form,
   FormInput,
   SubmitButton,
@@ -44,6 +45,7 @@ export default function SignIn({ navigation }) {
       style={{ flex: 1, resizeMode: 'cover' }}
     >
       <Container>
+        <AppTitle>R6 WOMEN&apos;S ALLIANCE</AppTitle>
         <Form>
           <FormInput
             icon="person-outline"

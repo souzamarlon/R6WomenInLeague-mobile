@@ -20,6 +20,13 @@ export const Container = styled.ScrollView.attrs({
   border-radius: 10px;
 `;
 
+export const AppTitle = styled.Text`
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+`;
+
 export const Form = styled.View`
   align-self: stretch;
   margin-top: 25px;
