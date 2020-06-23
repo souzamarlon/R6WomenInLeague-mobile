@@ -2,13 +2,13 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
-  width: 260px;
-  height: 460px;
+  width: 180px;
+  height: 442px;
   background: rgba(10, 10, 10, 0.5);
   /* box-sizing: border-box; */
   box-shadow: 5px 5px 8px rgb(10, 10, 10);
   border-radius: 9px;
-  margin: 10px 10px;
+  margin: 10px 2px;
   border: 0;
   /* transition: background 0.3s; */
   align-items: center;
@@ -114,6 +114,19 @@ export const R6Region = styled.Text`
   background-color: rgba(255, 25, 34, 0.33);
   border-radius: 9px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const AddRemoveButton = styled(RectButton)`
+  border-radius: 50px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.1);
+  /* box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.5); */
+  width: 60px;
+  height: 60px;
+  padding-top: 5px;
+  margin-top: 2px;
   justify-content: center;
   align-items: center;
 `;

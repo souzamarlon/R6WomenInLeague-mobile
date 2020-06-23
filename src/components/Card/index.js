@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import api from '~/services/api';
 
@@ -17,6 +18,7 @@ import {
   R6Comp,
   R6Times,
   R6Region,
+  AddRemoveButton,
 } from './styles';
 
 export default function Card({ dataR6, friendAdded }) {
@@ -99,7 +101,7 @@ export default function Card({ dataR6, friendAdded }) {
   // console.tron.log(dataR6);
 
   return (
-    <Container onPress={() => addFriend(dataR6.id)}>
+    <Container>
       <ImageArea>
         <Avatar
           source={{
@@ -120,6 +122,9 @@ export default function Card({ dataR6, friendAdded }) {
       <R6Comp status_competition={dataR6.competition}>CHAMPIONSHIP</R6Comp>
       <R6Times>{dataR6.times}</R6Times>
       <R6Region>{dataR6.region}</R6Region>
+      <AddRemoveButton onPress={() => addFriend(dataR6.id)}>
+        <Icon name="heart" size={45} color="#29F907" />
+      </AddRemoveButton>
     </Container>
   );
 }

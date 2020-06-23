@@ -6,7 +6,13 @@ import Background from '~/components/Background';
 import Card from '~/components/Card';
 
 import api from '~/services/api';
-import { Container, Content, CardList, ButtonSwitchPages } from './styles';
+import {
+  Container,
+  Content,
+  CardList,
+  ButtonSwitchPages,
+  AlignSwitchPages,
+} from './styles';
 
 export default function Dashboard() {
   const [refreshList, setRefreshList] = useState(false);
@@ -65,27 +71,19 @@ export default function Dashboard() {
   return (
     <Background>
       <Container>
-        <ButtonSwitchPages
-          onPress={() => handlePage('back')}
-          enabled={!(page <= 1)}
-        >
-          <Icon
-            name="navigate-before"
-            size={34}
-            color="rgba(255, 255, 255, 0.6)"
-          />
-        </ButtonSwitchPages>
         <Content>
           <CardList
             ref={flatListRef}
             data={r6Data}
             refreshing={refreshList}
             onRefresh={loadPage}
-            horizontal
+            // horizontal
+            numColumns={2}
             initialNumToRender={14}
             // onEndReachedThreshold={0.5}
             // onEndReached={() => setPage(page + 1)}
             // scrollEventThrottle={400}
+            num
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
@@ -95,17 +93,28 @@ export default function Dashboard() {
             )}
           />
         </Content>
-
-        <ButtonSwitchPages
-          onPress={() => handlePage('next')}
-          enabled={r6Data.length >= 1}
-        >
-          <Icon
-            name="navigate-next"
-            size={34}
-            color="rgba(255, 255, 255, 0.6)"
-          />
-        </ButtonSwitchPages>
+        <AlignSwitchPages>
+          <ButtonSwitchPages
+            onPress={() => handlePage('back')}
+            enabled={!(page <= 1)}
+          >
+            <Icon
+              name="navigate-before"
+              size={34}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+          </ButtonSwitchPages>
+          <ButtonSwitchPages
+            onPress={() => handlePage('next')}
+            enabled={r6Data.length >= 1}
+          >
+            <Icon
+              name="navigate-next"
+              size={34}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+          </ButtonSwitchPages>
+        </AlignSwitchPages>
       </Container>
     </Background>
   );
