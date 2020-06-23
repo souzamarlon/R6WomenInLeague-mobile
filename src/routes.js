@@ -56,7 +56,10 @@ export default function createRouter(isSigned = false) {
       tabBarOptions={{
         keyboardHidesTabBar: true,
         activeTintColor: '#fff',
-        inactiveTintColor: '#000',
+        inactiveTintColor: '#333',
+        inactiveBackgroundColor: '#111',
+        activeBackgroundColor: '#222',
+        showLabel: false,
         // animationEnabled: true,
 
         labelStyle: {
@@ -65,8 +68,9 @@ export default function createRouter(isSigned = false) {
         },
         style: {
           height: 38,
-          backgroundColor: '#222',
-          paddingTop: 20,
+          backgroundColor: '#111',
+          paddingTop: 2,
+          borderTopWidth: 0,
         },
       }}
     >
@@ -74,7 +78,7 @@ export default function createRouter(isSigned = false) {
         name="Dashboard"
         component={Dashboard}
         options={{
-          tabBarLabel: '',
+          // tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <Icon name="home" size={30} color={color} />
           ),
@@ -84,7 +88,7 @@ export default function createRouter(isSigned = false) {
         name="Search"
         component={Search}
         options={{
-          tabBarLabel: '',
+          // tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <Icon name="search" size={30} color={color} />
           ),
@@ -94,7 +98,7 @@ export default function createRouter(isSigned = false) {
         name="Friends"
         component={Friends}
         options={{
-          tabBarLabel: '',
+          // tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <Icon name="people" size={30} color={color} />
           ),
@@ -104,7 +108,7 @@ export default function createRouter(isSigned = false) {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: '',
+          // tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <Icon name="face" size={30} color={color} />
           ),
