@@ -55,16 +55,18 @@ export default function createRouter(isSigned = false) {
     <Tabs.Navigator
       tabBarOptions={{
         keyboardHidesTabBar: true,
-        activeTintColor: '#7D40E7',
-        inactiveTintColor: '#999999',
+        activeTintColor: '#fff',
+        inactiveTintColor: '#000',
+        // animationEnabled: true,
 
         labelStyle: {
           fontSize: 14,
-          marginBottom: 5,
+          // paddingBottom: 5,
         },
         style: {
-          height: 50,
-          backgroundColor: '#ffff',
+          height: 38,
+          backgroundColor: '#222',
+          paddingTop: 20,
         },
       }}
     >
@@ -72,9 +74,9 @@ export default function createRouter(isSigned = false) {
         name="Dashboard"
         component={Dashboard}
         options={{
-          tabBarLabel: 'Dashboard',
+          tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <Icon name="reorder" size={20} color={color} />
+            <Icon name="home" size={30} color={color} />
           ),
         }}
       />
@@ -82,9 +84,9 @@ export default function createRouter(isSigned = false) {
         name="Search"
         component={Search}
         options={{
-          tabBarLabel: 'Search',
+          tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <Icon name="search" size={20} color={color} />
+            <Icon name="search" size={30} color={color} />
           ),
         }}
       />
@@ -92,9 +94,9 @@ export default function createRouter(isSigned = false) {
         name="Friends"
         component={Friends}
         options={{
-          tabBarLabel: 'Friends',
+          tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <Icon name="people" size={20} color={color} />
+            <Icon name="people" size={30} color={color} />
           ),
         }}
       />
@@ -102,9 +104,9 @@ export default function createRouter(isSigned = false) {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <Icon name="face" size={20} color={color} />
+            <Icon name="face" size={30} color={color} />
           ),
         }}
       />
