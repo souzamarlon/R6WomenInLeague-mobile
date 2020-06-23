@@ -83,6 +83,9 @@ export default function Dashboard() {
             onRefresh={loadPage}
             horizontal
             initialNumToRender={14}
+            // onEndReachedThreshold={0.5}
+            // onEndReached={() => setPage(page + 1)}
+            // scrollEventThrottle={400}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
