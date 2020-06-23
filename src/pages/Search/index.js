@@ -14,6 +14,7 @@ import {
   CardList,
   ButtonSwitchPages,
   ResetButton,
+  AlignSwitchPages,
   ResetText,
 } from './styles';
 
@@ -81,16 +82,6 @@ export default function Search() {
   return (
     <Background>
       <Container>
-        <ButtonSwitchPages
-          onPress={() => handlePage('back')}
-          enabled={!(page <= 1)}
-        >
-          <Icon
-            name="navigate-before"
-            size={34}
-            color="rgba(255, 255, 255, 0.6)"
-          />
-        </ButtonSwitchPages>
         <Content isAlign={!!playerData.length}>
           {playerData.length !== 0 ? (
             <CardList
@@ -98,8 +89,8 @@ export default function Search() {
               data={r6Data}
               refreshing={refreshList}
               onRefresh={loadPage}
-              // numColumns={1}
-              horizontal
+              numColumns={2}
+              // horizontal
               initialNumToRender={14}
               keyExtractor={(item) => String(item.id)}
               renderItem={({ item: data }) => (
@@ -113,25 +104,35 @@ export default function Search() {
             <SearchTool onChange={setPlayerData} />
           )}
         </Content>
-
-        <ButtonSwitchPages
-          onPress={() => handlePage('next')}
-          enabled={r6Data.length >= 1}
+        <AlignSwitchPages>
+          <ButtonSwitchPages
+            onPress={() => handlePage('back')}
+            enabled={!(page <= 1)}
+          >
+            <Icon
+              name="navigate-before"
+              size={34}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+          </ButtonSwitchPages>
+          <ButtonSwitchPages
+            onPress={() => handlePage('next')}
+            enabled={r6Data.length >= 1}
+          >
+            <Icon
+              name="navigate-next"
+              size={34}
+              color="rgba(255, 255, 255, 0.6)"
+            />
+          </ButtonSwitchPages>
+        </AlignSwitchPages>
+        <ResetButton
+          enabled={playerData.length !== 0}
+          onPress={() => searchAgain()}
         >
-          <Icon
-            name="navigate-next"
-            size={34}
-            color="rgba(255, 255, 255, 0.6)"
-          />
-        </ButtonSwitchPages>
+          <ResetText>Search again?</ResetText>
+        </ResetButton>
       </Container>
-
-      <ResetButton
-        enabled={playerData.length !== 0}
-        onPress={() => searchAgain()}
-      >
-        <ResetText>Search again?</ResetText>
-      </ResetButton>
     </Background>
   );
 }

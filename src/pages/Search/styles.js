@@ -2,18 +2,19 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
-  margin: auto;
-  width: 85%;
+  margin: 5px auto;
+  width: 100%;
   /* height: 749px; */
   border: 0;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 `;
 
 export const Content = styled.View`
   width: 99%;
-  height: 490px;
+  height: 95%;
+  max-height: 690px;
   display: flex;
   justify-content: ${(props) => (props.isAlign ? 'flex-start' : 'center')};
   align-items: center;
@@ -44,8 +45,16 @@ export const ResetButton = styled(RectButton)`
   margin-bottom: 15px;
 `;
 
+export const AlignSwitchPages = styled.View`
+  flex-direction: row;
+  /* margin-bottom: 15px; */
+`;
+
 export const ResetText = styled.Text`
   color: #fff;
   font-size: 14px;
+  /* width: 100%; */
   margin: auto;
+  height: 30px;
+  /* margin-bottom: 10px; */
 `;
