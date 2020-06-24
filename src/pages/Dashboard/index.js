@@ -71,7 +71,7 @@ export default function Dashboard() {
         if (response.data.length <= 0) {
           setPage(page - 1);
           setMoreData(false);
-          return Alert.alert('Hi, We did not find more users!');
+          // return Alert.alert('Hi, We did not find more users!');
         }
 
         setR6Data((oldData) => [...oldData, ...response.data]);

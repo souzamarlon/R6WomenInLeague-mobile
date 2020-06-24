@@ -47,6 +47,7 @@ export default function Search() {
   }, [playerData, refreshList]);
 
   function searchAgain() {
+    setPage(1);
     setPlayerData([]);
     setR6Data([]);
   }
@@ -80,7 +81,7 @@ export default function Search() {
         if (response.data.length <= 0) {
           setPage(page - 1);
           setMoreData(false);
-          return Alert.alert('Hi, We did not find more users!');
+          // return Alert.alert('Hi, We did not find more users!');
         }
 
         setR6Data((oldData) => [...oldData, ...response.data]);
@@ -132,14 +133,16 @@ export default function Search() {
           ) : (
             <SearchTool onChange={setPlayerData} />
           )}
-        </Content>
 
-        <ResetButton
-          enabled={playerData.length !== 0}
-          onPress={() => searchAgain()}
-        >
-          <ResetText>Search again?</ResetText>
-        </ResetButton>
+          {playerData.length !== 0 ? (
+            <ResetButton
+              enabled={playerData.length !== 0}
+              onPress={() => searchAgain()}
+            >
+              <ResetText>Search again?</ResetText>
+            </ResetButton>
+          ) : null}
+        </Content>
       </Container>
     </Background>
   );
