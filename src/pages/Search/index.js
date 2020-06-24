@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Alert } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Alert, ActivityIndicator } from 'react-native';
 
 import Card from '~/components/Card';
 import SearchTool from '~/components/SearchTool';
@@ -8,15 +7,7 @@ import Background from '~/components/Background';
 
 import api from '~/services/api';
 
-import {
-  Container,
-  Content,
-  CardList,
-  ButtonSwitchPages,
-  ResetButton,
-  AlignSwitchPages,
-  ResetText,
-} from './styles';
+import { Container, Content, CardList, ResetButton, ResetText } from './styles';
 
 export default function Search() {
   const [playerData, setPlayerData] = useState([]);
@@ -24,6 +15,7 @@ export default function Search() {
   const [page, setPage] = useState(1);
   const [friendAdded, setFriendAdded] = useState([]);
   const [refreshList, setRefreshList] = useState(false);
+  const [moreData, setMoreData] = useState(false);
 
   const flatListRef = useRef();
 
@@ -52,12 +44,7 @@ export default function Search() {
     }
 
     SearchFun();
-  }, [playerData, page]);
-
-  function handlePage(action) {
-    // const count = action === 'back' ? page - 1 : page + 1;
-    setPage(action === 'back' ? page - 1 : page + 1);
-  }
+  }, [playerData, refreshList]);
 
   function searchAgain() {
     setPlayerData([]);
@@ -65,6 +52,7 @@ export default function Search() {
   }
 
   async function loadPage() {
+    setPage(1);
     setRefreshList(true);
   }
 
@@ -79,6 +67,32 @@ export default function Search() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [friendAdded]);
 
+  useEffect(() => {
+    async function loadMore() {
+      if (moreData === true) {
+        const response = await api.get(`users`, {
+          params: {
+            page,
+            per_page: 14,
+          },
+        });
+
+        if (response.data.length <= 0) {
+          setPage(page - 1);
+          setMoreData(false);
+          return Alert.alert('Hi, We did not find more users!');
+        }
+
+        setR6Data((oldData) => [...oldData, ...response.data]);
+        setRefreshList(false);
+        setMoreData(false);
+        // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
+      }
+    }
+
+    loadMore();
+  }, [moreData]);
+
   return (
     <Background>
       <Container>
@@ -89,9 +103,17 @@ export default function Search() {
               data={r6Data}
               refreshing={refreshList}
               onRefresh={loadPage}
-              numColumns={2}
               // horizontal
+              numColumns={2}
               initialNumToRender={14}
+              onEndReachedThreshold={0.1}
+              onEndReached={({ distanceFromEnd }) => {
+                if (distanceFromEnd > 0) {
+                  setMoreData(true);
+                  setPage(page + 1);
+                }
+              }}
+              // scrollEventThrottle={400}
               keyExtractor={(item) => String(item.id)}
               renderItem={({ item: data }) => (
                 <Card
@@ -99,33 +121,19 @@ export default function Search() {
                   friendAdded={(value) => setFriendAdded(value)}
                 />
               )}
+              ListFooterComponent={
+                <>
+                  {moreData ? (
+                    <ActivityIndicator size="small" color="#FFF" />
+                  ) : null}
+                </>
+              }
             />
           ) : (
             <SearchTool onChange={setPlayerData} />
           )}
         </Content>
-        <AlignSwitchPages>
-          <ButtonSwitchPages
-            onPress={() => handlePage('back')}
-            enabled={!(page <= 1)}
-          >
-            <Icon
-              name="navigate-before"
-              size={34}
-              color="rgba(255, 255, 255, 0.6)"
-            />
-          </ButtonSwitchPages>
-          <ButtonSwitchPages
-            onPress={() => handlePage('next')}
-            enabled={r6Data.length >= 1}
-          >
-            <Icon
-              name="navigate-next"
-              size={34}
-              color="rgba(255, 255, 255, 0.6)"
-            />
-          </ButtonSwitchPages>
-        </AlignSwitchPages>
+
         <ResetButton
           enabled={playerData.length !== 0}
           onPress={() => searchAgain()}

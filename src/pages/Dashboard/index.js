@@ -1,18 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Alert, ActivityIndicator } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 
 import Card from '~/components/Card';
 
 import api from '~/services/api';
-import {
-  Container,
-  Content,
-  CardList,
-  ButtonSwitchPages,
-  AlignSwitchPages,
-} from './styles';
+import { Container, Content, CardList } from './styles';
 
 export default function Dashboard() {
   const [refreshList, setRefreshList] = useState(false);
