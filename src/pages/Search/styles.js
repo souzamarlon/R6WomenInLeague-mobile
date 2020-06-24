@@ -25,7 +25,7 @@ export const Content = styled.View`
 export const CardList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
-    paddingLeft: 10,
+    // paddingLeft: 10,
   },
 })``;
 

@@ -2,12 +2,12 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
-  margin: auto;
-  width: 85%;
+  margin: 15px auto;
+  width: 100%;
   /* height: 80vh; */
   border: 0;
   align-items: center;
-  /* flex-direction: row; */
+  flex-direction: column;
   justify-content: center;
 `;
 
@@ -54,7 +54,8 @@ export const Content = styled.View`
   width: 99%;
   display: flex;
   border-radius: 8px;
-  height: 490px;
+  height: 100%;
+  max-height: 720px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;
@@ -63,16 +64,6 @@ export const Content = styled.View`
 export const CardList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
-    paddingLeft: 10,
+    // paddingLeft: 10,
   },
 })``;
-
-export const AlignSwitchButton = styled.View`
-  flex-direction: row;
-`;
-
-export const ButtonSwitchPages = styled(RectButton)`
-  background: transparent;
-  color: #fff;
-  border: 0;
-`;

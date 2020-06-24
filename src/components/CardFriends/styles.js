@@ -2,19 +2,17 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
-  width: 260px;
-  height: 460px;
+  width: 180px;
+  height: 100%;
+  max-height: 425px;
   background: rgba(10, 10, 10, 0.5);
   /* box-sizing: border-box; */
   box-shadow: 5px 5px 8px rgb(10, 10, 10);
   border-radius: 9px;
-  margin: 10px 10px;
+  margin: 10px 2px;
   border: 0;
-  /* transition: background 0.3s; */
+
   align-items: center;
-  /* -moz-transition: all 0.3s;
-  -webkit-transition: all 0.3s; */
-  /* transition: all 0.3s; */
 `;
 
 export const ImageArea = styled.View`
@@ -86,7 +84,8 @@ export const AddRemove = styled.View`
   flex-direction: row;
   display: flex;
   justify-content: space-between;
-  /* margin: 0 5px; */
+  /* background: #fff; */
+  width: 90%;
 `;
 
 export const AddRemoveButton = styled(RectButton)`
@@ -97,7 +96,7 @@ export const AddRemoveButton = styled(RectButton)`
   width: 45px;
   height: 45px;
   padding-top: 2px;
-  margin-top: 40px;
+  margin-top: 5px;
   justify-content: center;
   align-items: center;
 `;

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Alert } from 'react-native';
+import { Alert, ActivityIndicator } from 'react-native';
 import { useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Card from '~/components/CardFriends';
 import Background from '~/components/Background';
@@ -17,8 +16,6 @@ import {
   FriendRequests,
   MenuText,
   Line,
-  AlignSwitchButton,
-  ButtonSwitchPages,
 } from './styles';
 
 export default function Friends() {
@@ -27,6 +24,7 @@ export default function Friends() {
   const [myFriends, setMyFriends] = useState(true);
   const [isAdded, setIsAdded] = useState(false);
   const [refreshList, setRefreshList] = useState(false);
+  const [moreData, setMoreData] = useState(false);
 
   const { id } = useSelector((state) => state.user.profile);
 
@@ -65,14 +63,48 @@ export default function Friends() {
     SearchFun();
 
     setRefreshList(false);
-  }, [page, myFriends, isAdded, refreshList]);
+  }, [myFriends, isAdded, refreshList]);
 
-  function handlePage(action) {
-    // const count = action === 'back' ? page - 1 : page + 1;
-    setPage(action === 'back' ? page - 1 : page + 1);
-  }
+  useEffect(() => {
+    async function loadMore() {
+      if (moreData === true) {
+        if (myFriends) {
+          const response = await api.get(`friendship`, {
+            params: {
+              accepted: true,
+              page,
+              per_page: 14,
+            },
+          });
+
+          return setR6Data((oldData) => [...oldData, ...response.data]);
+        }
+
+        const response = await api.get(`friendship`, {
+          params: {
+            page,
+            per_page: 14,
+          },
+        });
+
+        if (response.data.length <= 0) {
+          setPage(page - 1);
+          setMoreData(false);
+          // return Alert.alert('Hi, We did not find more users!');
+        }
+
+        setR6Data((oldData) => [...oldData, ...response.data]);
+        setRefreshList(false);
+        setMoreData(false);
+        // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
+      }
+    }
+
+    loadMore();
+  }, [moreData]);
 
   async function loadPage() {
+    setPage(1);
     setRefreshList(true);
   }
 
@@ -100,9 +132,15 @@ export default function Friends() {
             data={r6Data}
             refreshing={refreshList}
             onRefresh={loadPage}
-            // numColumns={1}
-            horizontal
+            numColumns={2}
             initialNumToRender={14}
+            onEndReachedThreshold={0.1}
+            onEndReached={({ distanceFromEnd }) => {
+              if (distanceFromEnd > 0) {
+                setMoreData(true);
+                setPage(page + 1);
+              }
+            }}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
@@ -111,31 +149,15 @@ export default function Friends() {
                 allData={data}
               />
             )}
+            ListFooterComponent={
+              <>
+                {moreData ? (
+                  <ActivityIndicator size="small" color="#FFF" />
+                ) : null}
+              </>
+            }
           />
         </Content>
-        <AlignSwitchButton>
-          <ButtonSwitchPages
-            onPress={() => handlePage('back')}
-            enabled={!(page <= 1)}
-          >
-            <Icon
-              name="navigate-before"
-              size={34}
-              color="rgba(255, 255, 255, 0.6)"
-            />
-          </ButtonSwitchPages>
-
-          <ButtonSwitchPages
-            onPress={() => handlePage('next')}
-            enabled={r6Data.length >= 1}
-          >
-            <Icon
-              name="navigate-next"
-              size={34}
-              color="rgba(255, 255, 255, 0.6)"
-            />
-          </ButtonSwitchPages>
-        </AlignSwitchButton>
       </Container>
     </Background>
   );

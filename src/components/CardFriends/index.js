@@ -208,18 +208,19 @@ export default function CardFriends({ dataR6, friendAdded, allData }) {
           </R6Rank>
           <R6PlayStyle>{`Play Style is ${dataR6.play_style}.`}</R6PlayStyle>
           <R6Info>Available to play:</R6Info>
+          <AvailableInfo>
+            <R6Ranked status_ranked={dataR6.ranked}>RANKED</R6Ranked>
+            <R6Comp status_competition={dataR6.competition}>
+              CHAMPIONSHIP
+            </R6Comp>
+            <R6Times>{dataR6.times}</R6Times>
+            <R6Region>{dataR6.region}</R6Region>
+          </AvailableInfo>
           <AddRemove>
             <AddRemoveButton onPress={() => removeFriend(allData.id)}>
               <Icon name="thumbs-down" size={32} color="#F90733" />
             </AddRemoveButton>
-            <AvailableInfo>
-              <R6Ranked status_ranked={dataR6.ranked}>RANKED</R6Ranked>
-              <R6Comp status_competition={dataR6.competition}>
-                CHAMPIONSHIP
-              </R6Comp>
-              <R6Times>{dataR6.times}</R6Times>
-              <R6Region>{dataR6.region}</R6Region>
-            </AvailableInfo>
+
             {allData.user.id === dataR6.id ? (
               <AddRemoveButton onPress={() => acceptFriend(allData.id)}>
                 <Icon name="heart" size={32} color="#29F907" />
