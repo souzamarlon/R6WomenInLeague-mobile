@@ -77,7 +77,13 @@ export default function Friends() {
             },
           });
 
-          return setR6Data((oldData) => [...oldData, ...response.data]);
+          if (response.data.length <= 0) {
+            setPage(page - 1);
+            setMoreData(false);
+            // return Alert.alert('Hi, We did not find more users!');
+          }
+
+          setR6Data((oldData) => [...oldData, ...response.data]);
         }
 
         const response = await api.get(`friendship`, {
@@ -107,6 +113,9 @@ export default function Friends() {
     setPage(1);
     setRefreshList(true);
   }
+
+  console.tron.log('moreData', moreData);
+  console.tron.log('page', page);
 
   return (
     <Background>
