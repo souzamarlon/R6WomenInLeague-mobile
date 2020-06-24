@@ -33,6 +33,7 @@ export default function Dashboard() {
         });
 
         if (response.data.length <= 0) {
+          setPage(1);
           return Alert.alert('Hi, We did not find more users!');
         }
 
@@ -52,9 +53,10 @@ export default function Dashboard() {
     setRefreshList(true);
   }
 
-  function handlePage(action) {
+  async function handlePage(pages) {
     // const count = action === 'back' ? page - 1 : page + 1;
-    setPage(action === 'back' ? page - 1 : page + 1);
+    // setRefreshList(false);
+    // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
   }
 
   useEffect(() => {
@@ -80,8 +82,12 @@ export default function Dashboard() {
             // horizontal
             numColumns={2}
             initialNumToRender={14}
-            // onEndReachedThreshold={0.5}
-            // onEndReached={() => setPage(page + 1)}
+            onEndReachedThreshold={0.1}
+            onEndReached={({ distanceFromEnd }) => {
+              if (distanceFromEnd > 0) {
+                setPage(page + 1);
+              }
+            }}
             // scrollEventThrottle={400}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
