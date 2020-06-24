@@ -247,9 +247,14 @@ CardFriends.propTypes = {
     ranked: PropTypes.bool,
     competition: PropTypes.bool,
     times: PropTypes.string,
+    discord_user: PropTypes.string,
   }).isRequired,
   allData: PropTypes.shape({
+    id: PropTypes.number,
     accepted: PropTypes.bool,
     discord_user: PropTypes.string,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+    }),
   }).isRequired,
 };
