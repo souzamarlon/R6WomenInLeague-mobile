@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Alert } from 'react-native';
+import { Alert, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 
@@ -118,6 +118,13 @@ export default function Dashboard() {
                 friendAdded={(value) => setFriendAdded(value)}
               />
             )}
+            ListFooterComponent={
+              <>
+                {moreData ? (
+                  <ActivityIndicator size="small" color="#FFF" />
+                ) : null}
+              </>
+            }
           />
         </Content>
       </Container>
