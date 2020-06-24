@@ -16,7 +16,7 @@ export const Content = styled.View`
   display: flex;
   border-radius: 8px;
   height: 100%;
-  max-height: 720px;
+  max-height: 740px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;

@@ -19,7 +19,7 @@ export default function Dashboard() {
   const [r6Data, setR6Data] = useState([]);
   const [friendAdded, setFriendAdded] = useState([]);
   const [page, setPage] = useState(1);
-  const [test, setTest] = useState([]);
+  const [moreData, setMoreData] = useState(false);
 
   const flatListRef = useRef();
 
@@ -34,7 +34,6 @@ export default function Dashboard() {
         });
 
         if (response.data.length <= 0) {
-          setPage(1);
           return Alert.alert('Hi, We did not find more users!');
         }
 
@@ -56,29 +55,6 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    async function loadMore() {
-      if (page > 1) {
-        const response = await api.get(`users`, {
-          params: {
-            page,
-            per_page: 14,
-          },
-        });
-
-        if (response.data.length <= 0) {
-          return Alert.alert('Hi, We did not find more users!');
-        }
-
-        setR6Data((oldData) => [...oldData, ...response.data]);
-        setRefreshList(false);
-        // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
-      }
-    }
-
-    loadMore();
-  }, [page]);
-
-  useEffect(() => {
     if (friendAdded > 0) {
       const newList = r6Data.filter((value) => {
         return value.id === friendAdded ? null : value;
@@ -89,8 +65,31 @@ export default function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [friendAdded]);
 
-  console.tron.log('test', r6Data);
-  console.tron.log('page', page);
+  useEffect(() => {
+    async function loadMore() {
+      if (moreData === true) {
+        const response = await api.get(`users`, {
+          params: {
+            page,
+            per_page: 14,
+          },
+        });
+
+        if (response.data.length <= 0) {
+          setPage(page - 1);
+          setMoreData(false);
+          return Alert.alert('Hi, We did not find more users!');
+        }
+
+        setR6Data((oldData) => [...oldData, ...response.data]);
+        setRefreshList(false);
+        setMoreData(false);
+        // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
+      }
+    }
+
+    loadMore();
+  }, [moreData]);
 
   return (
     <Background>
@@ -103,15 +102,16 @@ export default function Dashboard() {
             onRefresh={loadPage}
             // horizontal
             numColumns={2}
-            initialNumToRender={4}
+            initialNumToRender={14}
             onEndReachedThreshold={0.1}
             onEndReached={({ distanceFromEnd }) => {
               if (distanceFromEnd > 0) {
+                setMoreData(true);
                 setPage(page + 1);
               }
             }}
             // scrollEventThrottle={400}
-            keyExtractor={(item, index) => String(index.id)}
+            keyExtractor={(item) => String(item.id)}
             renderItem={({ item: data }) => (
               <Card
                 dataR6={data}
