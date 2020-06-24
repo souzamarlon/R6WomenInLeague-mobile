@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [r6Data, setR6Data] = useState([]);
   const [friendAdded, setFriendAdded] = useState([]);
   const [page, setPage] = useState(1);
+  const [test, setTest] = useState([]);
 
   const flatListRef = useRef();
 
@@ -47,17 +48,35 @@ export default function Dashboard() {
     }
 
     SearchFun();
-  }, [page, refreshList]);
+  }, [refreshList]);
 
   async function loadPage() {
+    setPage(1);
     setRefreshList(true);
   }
 
-  async function handlePage(pages) {
-    // const count = action === 'back' ? page - 1 : page + 1;
-    // setRefreshList(false);
-    // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
-  }
+  useEffect(() => {
+    async function loadMore() {
+      if (page > 1) {
+        const response = await api.get(`users`, {
+          params: {
+            page,
+            per_page: 14,
+          },
+        });
+
+        if (response.data.length <= 0) {
+          return Alert.alert('Hi, We did not find more users!');
+        }
+
+        setR6Data((oldData) => [...oldData, ...response.data]);
+        setRefreshList(false);
+        // flatListRef.current.scrollToOffset({ animated: true, offset: 0 });
+      }
+    }
+
+    loadMore();
+  }, [page]);
 
   useEffect(() => {
     if (friendAdded > 0) {
@@ -70,6 +89,9 @@ export default function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [friendAdded]);
 
+  console.tron.log('test', r6Data);
+  console.tron.log('page', page);
+
   return (
     <Background>
       <Container>
@@ -81,7 +103,7 @@ export default function Dashboard() {
             onRefresh={loadPage}
             // horizontal
             numColumns={2}
-            initialNumToRender={14}
+            initialNumToRender={4}
             onEndReachedThreshold={0.1}
             onEndReached={({ distanceFromEnd }) => {
               if (distanceFromEnd > 0) {
@@ -89,7 +111,7 @@ export default function Dashboard() {
               }
             }}
             // scrollEventThrottle={400}
-            keyExtractor={(item) => String(item.id)}
+            keyExtractor={(item, index) => String(index.id)}
             renderItem={({ item: data }) => (
               <Card
                 dataR6={data}
@@ -98,28 +120,6 @@ export default function Dashboard() {
             )}
           />
         </Content>
-        <AlignSwitchPages>
-          <ButtonSwitchPages
-            onPress={() => handlePage('back')}
-            enabled={!(page <= 1)}
-          >
-            <Icon
-              name="navigate-before"
-              size={34}
-              color="rgba(255, 255, 255, 0.6)"
-            />
-          </ButtonSwitchPages>
-          <ButtonSwitchPages
-            onPress={() => handlePage('next')}
-            enabled={r6Data.length >= 1}
-          >
-            <Icon
-              name="navigate-next"
-              size={34}
-              color="rgba(255, 255, 255, 0.6)"
-            />
-          </ButtonSwitchPages>
-        </AlignSwitchPages>
       </Container>
     </Background>
   );

@@ -15,8 +15,8 @@ export const Content = styled.View`
   width: 99%;
   display: flex;
   border-radius: 8px;
-  height: 95%;
-  max-height: 690px;
+  height: 100%;
+  max-height: 720px;
   background: rgba(27, 25, 28, 0.74);
   /* justify-content: center; */
   align-items: center;
@@ -27,7 +27,6 @@ export const CardList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: true,
   contentContainerStyle: {
     // paddingTop: 10,
-    paddingLeft: 10,
   },
 })``;
 
