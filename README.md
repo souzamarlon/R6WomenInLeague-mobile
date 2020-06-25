@@ -2,12 +2,12 @@
     R6 WOMEN'S ALLIANCE
 </h1>
 
-![](https://img.shields.io/github/package-json/v/souzamarlon/R6WomenInLeague-frontend.svg)
-![](https://img.shields.io/github/last-commit/souzamarlon/R6WomenInLeague-frontend.svg?color=red)
-![](https://img.shields.io/github/languages/top/souzamarlon/R6WomenInLeague-frontend.svg?color=yellow)
-![](https://img.shields.io/github/languages/count/souzamarlon/R6WomenInLeague-frontend.svg?color=lightgrey)
-![](https://img.shields.io/github/languages/code-size/souzamarlon/R6WomenInLeague-frontend.svg)
-![](https://img.shields.io/github/repo-size/souzamarlon/R6WomenInLeague-frontend.svg?color=blueviolet)
+![](https://img.shields.io/github/package-json/v/souzamarlon/R6WomenInLeague-mobile.svg)
+![](https://img.shields.io/github/last-commit/souzamarlon/R6WomenInLeague-mobile?color=red)
+![](https://img.shields.io/github/languages/top/souzamarlon/R6WomenInLeague-mobile.svg?color=yellow)
+![](https://img.shields.io/github/languages/count/souzamarlon/R6WomenInLeague-mobile.svg?color=lightgrey)
+![](https://img.shields.io/github/languages/code-size/souzamarlon/R6WomenInLeague-mobile.svg)
+![](https://img.shields.io/github/repo-size/souzamarlon/R6WomenInLeague-mobile.svg?color=blueviolet)
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
 
 <h4 align="center">
@@ -30,15 +30,14 @@ React native:
 - [Redux](https://redux.js.org/)
 - [Immer](https://github.com/immerjs/immer)
 - [Axios](https://github.com/axios/axios)
-- [date-fns](https://date-fns.org/)
 - [prop-types](https://github.com/facebook/prop-types)
 - [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler)
-- [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient)
 - [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context)
+- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+- [styled-components](https://github.com/styled-components/styled-components)
 - [Reactotron](https://infinite.red/reactotron)
-- [React-native-camera](https://github.com/react-native-community/react-native-camera)
-- [React-native-image-editor](https://github.com/react-native-community/react-native-image-editor)
+
 
 React native:
 - [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
