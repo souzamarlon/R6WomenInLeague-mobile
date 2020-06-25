@@ -14,12 +14,6 @@
 In order to fight against discrimination, our goal is to help women in R6 to find a safe space during the game experience and connect with other women around the globe.
 </h4>
 
-<div style="text-align: right">
-[![R6WomenAlliance](http://img.youtube.com/vi/LQRTpffxGDE/0.jpg)](http://www.youtube.com/watch?v=LQRTpffxGDE "R6WomenAlliance")
-</div>
-
-
-
 <hr>
 <p align="center">
   <a href="#rocket-Libraries and Technologies">Libraries and Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
