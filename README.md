@@ -24,9 +24,11 @@ In order to fight against discrimination, our goal is to help women in R6 to fin
 
 ## 🚀 Preview<a name = "preview"></a>
 
+<div align="center"> 
 <a href="http://www.youtube.com/watch?v=LQRTpffxGDE" target="_blank" align="center">
   <img src="http://img.youtube.com/vi/LQRTpffxGDE/0.jpg" align="center">
 </a>
+</div>
 
 ## :rocket: Libraries and Technologies
 
