@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+
 import api from '~/services/api';
 
-import { Container, Avatar, Info } from './styles';
+import { Container, Avatar, Info, UserName, Text } from './styles';
 
 export default function ChatFriendsList({ friendData }) {
   const [avatar, setAvatar] = useState({});
@@ -39,7 +39,14 @@ export default function ChatFriendsList({ friendData }) {
           uri: 'https://api.adorable.io/avatars/50/abott@adorable.png',
         }}
       />
-      <Info />
+      <Info>
+        <UserName>{friendData.name}</UserName>
+        {friendData.status ? (
+          <Text status>Online</Text>
+        ) : (
+          <Text status={false}>Offline</Text>
+        )}
+      </Info>
     </Container>
   );
 }

@@ -2,10 +2,10 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   width: 340px;
-  height: 60px;
+  height: 65px;
   margin: 2px auto;
   border-radius: 4px;
-  background: #333;
+  background: #222;
   /* box-shadow: 5px 10px 10px 3px rgba(0, 0, 0, 0.4); */
   /* align-items: center; */
   flex-direction: row;
@@ -16,7 +16,7 @@ export const Info = styled.View`
   width: 110px;
   /* background: #fff; */
   /* justify-content: center; */
-  /* align-items: center; */
+  align-items: center;
   /* .online {
     color: #29f907;
   }
@@ -24,5 +24,19 @@ export const Info = styled.View`
     color: #f90707;
   } */
 `;
+export const UserName = styled.Text`
+  font-size: 14px;
+  color: #fff;
+`;
 
-export const Avatar = styled.Image``;
+export const Text = styled.Text`
+  font-size: 14px;
+  color: ${(props) => (props.status ? '#29f907' : ' #f90707')};
+`;
+
+export const Avatar = styled.Image`
+  width: 50px;
+  height: 55px;
+  border-radius: 100px;
+  margin-top: 4px;
+`;
