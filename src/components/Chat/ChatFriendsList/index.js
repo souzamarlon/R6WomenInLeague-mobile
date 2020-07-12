@@ -30,13 +30,10 @@ export default function ChatFriendsList({ friendData }) {
   return (
     <Container>
       <Avatar
-        // source={{
-        //   uri: playerData.uri
-        //     ? playerData.uri
-        //     : 'https://api.adorable.io/avatars/50/abott@adorable.png',
-        // }}
         source={{
-          uri: 'https://api.adorable.io/avatars/50/abott@adorable.png',
+          uri: avatar.avatar_url
+            ? avatar.avatar_url
+            : 'https://api.adorable.io/avatars/50/abott@adorable.png',
         }}
       />
       <Info>

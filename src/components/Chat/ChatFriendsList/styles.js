@@ -7,7 +7,7 @@ export const Container = styled.View`
   border-radius: 4px;
   background: #222;
   /* box-shadow: 5px 10px 10px 3px rgba(0, 0, 0, 0.4); */
-  /* align-items: center; */
+  align-items: center;
   flex-direction: row;
   display: flex;
 `;
@@ -39,4 +39,5 @@ export const Avatar = styled.Image`
   height: 55px;
   border-radius: 100px;
   margin-top: 4px;
+  margin-left: 20px;
 `;
