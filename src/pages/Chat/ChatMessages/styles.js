@@ -26,15 +26,16 @@ export const Content = styled.View`
 `;
 
 export const MessageField = styled.View`
+  background: ${(props) => (props.backgroundColor ? '#FFF' : '#dcf8c6')};
   border-radius: 20px;
   margin: 7px 10px;
   padding: 5px 10px;
   padding-bottom: 10px;
   justify-content: center;
-  align-items: center;
 `;
 
 export const Text = styled.Text`
+  text-align: ${(props) => (props.textAlign ? 'left' : 'right')};
   color: #000;
   font-size: 12px;
   padding-top: 7px;

@@ -112,8 +112,8 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           // scrollEventThrottle={400}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item: data }) => (
-            <MessageField>
-              <Text>{data.message}</Text>
+            <MessageField backgroundColor={data.user === friendId}>
+              <Text textAlign={data.user === friendId}>{data.message}</Text>
             </MessageField>
           )}
         />
