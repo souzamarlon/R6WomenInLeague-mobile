@@ -4,7 +4,7 @@ import api from '~/services/api';
 
 import { Container, Avatar, Info, UserName, Text } from './styles';
 
-export default function ChatFriendsList({ friendData }) {
+export default function ChatFriendsList({ friendData, onPress }) {
   const [avatar, setAvatar] = useState({});
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function ChatFriendsList({ friendData }) {
   }, [friendData]);
 
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Avatar
         source={{
           uri: avatar.avatar_url

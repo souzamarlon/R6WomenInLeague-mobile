@@ -8,7 +8,7 @@ import ChatFriendsList from '~/components/Chat/ChatFriendsList';
 
 import { Container } from './styles';
 
-export default function Chat() {
+export default function Chat({ navigation }) {
   const [friendId, setFriendId] = useState();
   const [friendsData, setFriendsData] = useState([]);
   const [newMessages, setNewMessages] = useState(false);
@@ -29,7 +29,7 @@ export default function Chat() {
           },
         });
 
-        const friendsData = response.data.map((item) =>
+        const allData = response.data.map((item) =>
           item.user_id === userId
             ? {
                 id: item.friend.id,
@@ -57,7 +57,7 @@ export default function Chat() {
               }
         );
 
-        setFriendsData(friendsData);
+        setFriendsData(allData);
         setRefreshList(false);
       } catch (err) {
         // toast.error('Failure!');
@@ -86,7 +86,9 @@ export default function Chat() {
         renderItem={({ item: data }) => (
           <ChatFriendsList
             friendData={data}
-            // friendAdded={(value) => setFriendAdded(value)}
+            onPress={() => {
+              navigation.navigate('ChatMessages', { friendId: data.id });
+            }}
           />
         )}
       />

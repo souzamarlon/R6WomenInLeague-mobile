@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import Friends from './pages/Friends';
 import Chat from './pages/Chat';
+import ChatMessages from './pages/Chat/ChatMessages';
 
 import Profile from './pages/Profile';
 
@@ -19,10 +20,10 @@ Icon.loadFont();
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-function DashboardStack({ navigation }) {
+function ChatStack({ navigation }) {
   return (
     <Stack.Navigator
-      initialRouteName="Search"
+      initialRouteName="Chat"
       headerMode="screen"
       screenOptions={{
         headerTransparent: true,
@@ -39,9 +40,25 @@ function DashboardStack({ navigation }) {
       }}
     >
       <Stack.Screen
-        name="Search"
-        component={Search}
-        // options={{ headerShown: false, headerTransparent: true }}
+        name="Chat"
+        component={Chat}
+        options={{ headerShown: false, headerTransparent: true }}
+      />
+      <Stack.Screen
+        name="ChatMessages"
+        component={ChatMessages}
+        options={{
+          title: 'ChatMessages',
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Icon name="chevron-left" size={24} color="#FFF" />
+            </TouchableOpacity>
+          ),
+        }}
       />
     </Stack.Navigator>
   );
@@ -108,7 +125,7 @@ export default function createRouter(isSigned = false) {
       />
       <Tabs.Screen
         name="Chat"
-        component={Chat}
+        component={ChatStack}
         options={{
           // tabBarLabel: '',
           tabBarIcon: ({ color }) => (
