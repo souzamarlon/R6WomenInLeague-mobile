@@ -11,6 +11,8 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import Friends from './pages/Friends';
+import Chat from './pages/Chat';
+
 import Profile from './pages/Profile';
 
 Icon.loadFont();
@@ -101,6 +103,16 @@ export default function createRouter(isSigned = false) {
           // tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <Icon name="people" size={30} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          // tabBarLabel: '',
+          tabBarIcon: ({ color }) => (
+            <Icon name="chat" size={30} color={color} />
           ),
         }}
       />
