@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import { RectButton } from 'react-native-gesture-handler';
+
 export const Container = styled.View`
   /* margin: auto;
   width: 605px;
@@ -72,4 +74,27 @@ export const Text = styled.Text`
   overflow: visible;
   /* word-break: break-all; */
   /* text-overflow: ellipsis; */
+`;
+
+export const Form = styled.ScrollView`
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 20px; */
+  margin: 20px 20px;
+`;
+
+export const TInput = styled.TextInput.attrs({
+  placeholderTextColor: 'rgba(0, 0, 0, 0.2)',
+  textAlignVertical: 'top',
+})`
+  background: #fff;
+  /* padding: 20px 20px; */
+  height: 50px;
+  font-size: 16px;
+  border-radius: 4px;
+`;
+
+export const SubmitButton = styled(RectButton)`
+  margin-top: 2px;
+  background: #7d40e7;
 `;

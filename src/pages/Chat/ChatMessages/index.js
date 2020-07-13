@@ -15,6 +15,9 @@ import {
   List,
   MessageField,
   Text,
+  Form,
+  TInput,
+  SubmitButton,
 } from './styles';
 
 export default function ChatMessages({ newMessages, newChatId, route }) {
@@ -157,6 +160,28 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           )}
         />
       </Content>
+      <Form>
+        <TInput
+          keyboardType="default"
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="Hi!"
+          multiline
+          numberOfLines={50}
+          maxLength={500}
+          // value={description}
+          // onChangeText={setDescription}
+        />
+        <SubmitButton onPress={handleSubmit}>
+          {/* <SendIcon
+                        style={{
+                            fontSize: 30,
+                            color: green[600],
+                            paddingLeft: 5,
+                        }}
+                    /> */}
+        </SubmitButton>
+      </Form>
     </Container>
   );
 }
