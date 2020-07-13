@@ -32,10 +32,10 @@ function ChatStack({ navigation }) {
           fontSize: 16,
           fontWeight: 'bold',
           textAlign: 'center',
-          marginLeft: 40,
+          // marginLeft: 0,
         },
         headerLeftContainerStyle: {
-          marginLeft: 20,
+          // marginLeft: 20,
         },
       }}
     >
@@ -47,15 +47,21 @@ function ChatStack({ navigation }) {
       <Stack.Screen
         name="ChatMessages"
         component={ChatMessages}
+        // options={{ headerShown: false, headerTransparent: true }}
         options={{
-          title: 'ChatMessages',
+          title: '',
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
               }}
             >
-              <Icon name="chevron-left" size={24} color="#FFF" />
+              <Icon
+                name="arrow-back"
+                size={30}
+                color="#FFF"
+                style={{ marginTop: 10 }}
+              />
             </TouchableOpacity>
           ),
         }}

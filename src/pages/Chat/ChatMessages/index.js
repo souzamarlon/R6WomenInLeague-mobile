@@ -2,9 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import { format, parseISO } from 'date-fns';
 import { useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '~/services/api';
 
-import { Container, List, Content, MessageField, Text } from './styles';
+import {
+  Container,
+  FriendInfo,
+  Avatar,
+  FriendName,
+  FriendLastMessage,
+  Content,
+  List,
+  MessageField,
+  Text,
+} from './styles';
 
 export default function ChatMessages({ newMessages, newChatId, route }) {
   const [chatId, setChatId] = useState(0);
@@ -100,6 +111,34 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
 
   return (
     <Container>
+      <FriendInfo>
+        <Avatar
+          source={{
+            uri: avatar.avatar_url
+              ? avatar.avatar_url
+              : 'https://api.adorable.io/avatars/50/abott@adorable.png',
+          }}
+        />
+
+        <FriendName>{friendInfo.name}</FriendName>
+        {status ? (
+          <Icon
+            name="radio-button-checked"
+            size={15}
+            color="#29F907"
+            style={{ marginTop: 3 }}
+          />
+        ) : (
+          <Icon
+            name="radio-button-checked"
+            size={15}
+            color="#999"
+            style={{ marginTop: 3 }}
+          />
+        )}
+
+        <FriendLastMessage>{`Last message: ${lastMessagesDate}`}</FriendLastMessage>
+      </FriendInfo>
       <Content>
         <List
           // ref={flatListRef}

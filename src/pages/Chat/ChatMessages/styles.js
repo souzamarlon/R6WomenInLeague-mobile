@@ -8,12 +8,35 @@ export const Container = styled.View`
   border-radius: 4px; */
 `;
 
-export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: true,
-  contentContainerStyle: {
-    // paddingTop: 10,
-  },
-})``;
+export const FriendInfo = styled.View`
+  height: 65px;
+  width: 100%;
+  /* justify-content: center; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #222;
+`;
+
+export const Avatar = styled.Image`
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  margin-top: 4px;
+  margin-left: 30px;
+`;
+
+export const FriendName = styled.Text`
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 15px;
+  color: #fff;
+`;
+export const FriendLastMessage = styled.Text`
+  margin-left: 20px;
+  font-size: 12px;
+  color: #fff;
+`;
 
 export const Content = styled.View`
   height: 540px;
@@ -24,6 +47,13 @@ export const Content = styled.View`
   border-bottom-right-radius: 20px;
   /* transition: all 0.5s; */
 `;
+
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: true,
+  contentContainerStyle: {
+    // paddingTop: 10,
+  },
+})``;
 
 export const MessageField = styled.View`
   background: ${(props) => (props.backgroundColor ? '#FFF' : '#dcf8c6')};
