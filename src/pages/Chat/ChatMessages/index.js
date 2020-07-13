@@ -112,6 +112,8 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
     setRefreshList(true);
   }
 
+  console.tron.log(allMessages.length > 0);
+
   return (
     <Container>
       <FriendInfo>
@@ -144,15 +146,10 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
       </FriendInfo>
       <Content>
         <List
-          // ref={flatListRef}
           data={allMessages}
           refreshing={refreshList}
           onRefresh={loadPage}
-          // horizontal
-          // numColumns={2}
-          initialNumToRender={14}
-          // scrollEventThrottle={400}
-          keyExtractor={(item) => String(item.id)}
+          keyExtractor={(item) => String(item._id)}
           renderItem={({ item: data }) => (
             <MessageField backgroundColor={data.user === friendId}>
               <Text textAlign={data.user === friendId}>{data.message}</Text>
@@ -173,13 +170,7 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           // onChangeText={setDescription}
         />
         <SubmitButton onPress={handleSubmit}>
-          {/* <SendIcon
-                        style={{
-                            fontSize: 30,
-                            color: green[600],
-                            paddingLeft: 5,
-                        }}
-                    /> */}
+          <Icon name="send" size={30} color="#999" style={{ marginTop: 3 }} />
         </SubmitButton>
       </Form>
     </Container>

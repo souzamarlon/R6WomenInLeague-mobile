@@ -1,8 +1,10 @@
 import styled from 'styled-components/native';
-
+import { Platform } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
+  width: 100%;
+  /* flex: 1; */
   /* margin: auto;
   width: 605px;
   height: 700px;
@@ -41,7 +43,8 @@ export const FriendLastMessage = styled.Text`
 `;
 
 export const Content = styled.View`
-  height: 540px;
+  /* height: 540px; */
+  height: 75%;
   background: rgba(222, 222, 255, 0.3);
   overflow: hidden;
   width: 100%;
@@ -51,7 +54,7 @@ export const Content = styled.View`
 `;
 
 export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: true,
+  showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     // paddingTop: 10,
   },
@@ -76,7 +79,11 @@ export const Text = styled.Text`
   /* text-overflow: ellipsis; */
 `;
 
-export const Form = styled.ScrollView`
+export const Form = styled.KeyboardAvoidingView.attrs({
+  enabled: Platform.OS === 'ios',
+  behavior: Platform.OS === 'ios' ? 'padding' : 'height',
+  keyboardVerticalOffset: 100,
+})`
   display: flex;
   flex-direction: row;
   /* margin-top: 20px; */
@@ -87,14 +94,16 @@ export const TInput = styled.TextInput.attrs({
   placeholderTextColor: 'rgba(0, 0, 0, 0.2)',
   textAlignVertical: 'top',
 })`
+  /* flex: 1; */
   background: #fff;
   /* padding: 20px 20px; */
   height: 50px;
+  width: 250px;
   font-size: 16px;
   border-radius: 4px;
 `;
 
 export const SubmitButton = styled(RectButton)`
   margin-top: 2px;
-  background: #7d40e7;
+  /* background: #7d40e7; */
 `;
