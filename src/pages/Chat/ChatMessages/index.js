@@ -48,6 +48,12 @@ export default function ChatMessages({ route }) {
     }
   });
 
+  socket.on('status', (data) => {
+    if (data.userId === friendId) {
+      setStatus(data.status);
+    }
+  });
+
   useEffect(() => {
     async function getMessages() {
       try {
@@ -64,7 +70,7 @@ export default function ChatMessages({ route }) {
               "MMMM d',' yyyy"
             )
           );
-
+          setRefreshList(false);
           // ref.current.scrollIntoView({
           //   behavior: 'smooth',
           //   block: 'end',
@@ -76,6 +82,7 @@ export default function ChatMessages({ route }) {
 
         setAllMessages([]);
         setChatId(0);
+        setRefreshList(false);
       }
     }
 
