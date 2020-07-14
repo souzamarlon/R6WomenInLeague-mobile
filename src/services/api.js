@@ -9,6 +9,10 @@ const api = axios.create({
 });
 
 api.registerInterceptWithStore = (store) => {
+  // const profile = store.useSelector((state) => state.user.profile);
+
+  // console.tron.log(profile);
+
   api.interceptors.response.use(
     (response) => response,
 
@@ -18,6 +22,7 @@ api.registerInterceptWithStore = (store) => {
         Alert.alert(`Authentication failure!, ${error}`);
 
         await store.dispatch(signOut());
+
         // history.go('/');
       }
       if (err.response.status === 400) {

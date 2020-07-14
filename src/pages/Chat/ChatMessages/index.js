@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View } from 'react-native';
+import io from 'socket.io-client';
 import { format, parseISO } from 'date-fns';
 import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -20,10 +20,12 @@ import {
   SubmitButton,
 } from './styles';
 
-export default function ChatMessages({ receivedMessages, newChatId, route }) {
+export default function ChatMessages({ route }) {
   const [chatId, setChatId] = useState(0);
   const [allMessages, setAllMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const [receivedMessages, setReceivedMessages] = useState(false);
+  const [newChatId, setNewChatId] = useState(0);
   const [lastMessagesDate, setLastMessagesDate] = useState([]);
   const [friendInfo, setFriendInfo] = useState({});
   const [avatar, setAvatar] = useState({});
@@ -33,6 +35,18 @@ export default function ChatMessages({ receivedMessages, newChatId, route }) {
 
   const profile = useSelector((state) => state.user.profile);
   const { friendId } = route.params;
+
+  const socket = io('http://192.168.25.32:3333', {
+    query: { user: profile.id },
+  });
+
+  socket.on('sendMessage', (data) => {
+    if (data.user === friendId) {
+      setNewChatId(newChatId <= 0 ? data.chatId : newChatId);
+      setReceivedMessages(data);
+      setStatus(data.status);
+    }
+  });
 
   useEffect(() => {
     async function getMessages() {
@@ -111,9 +125,15 @@ export default function ChatMessages({ receivedMessages, newChatId, route }) {
       setNewMessage('');
     }
 
-    await api.put(`/chat/${chatId}`, { message: newMessage });
+    const response = await api.put(`/chat/${chatId}`, { message: newMessage });
 
-    setAllMessages([...allMessages, { user: profile.id, message: newMessage }]);
+    // New message id
+    const { _id } = response.data;
+
+    setAllMessages([
+      ...allMessages,
+      { _id, user: profile.id, message: newMessage },
+    ]);
     setNewMessage('');
   }
 

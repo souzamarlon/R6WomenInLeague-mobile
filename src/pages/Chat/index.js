@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import Background from '~/components/Background';
 import api from '~/services/api';
@@ -11,8 +10,7 @@ import { Container } from './styles';
 export default function Chat({ navigation }) {
   const [friendId, setFriendId] = useState();
   const [friendsData, setFriendsData] = useState([]);
-  const [newMessages, setNewMessages] = useState(false);
-  const [newChatId, setNewChatId] = useState(0);
+
   const [status, setStatus] = useState({});
   const [refreshList, setRefreshList] = useState(false);
 
@@ -87,7 +85,10 @@ export default function Chat({ navigation }) {
           <ChatFriendsList
             friendData={data}
             onPress={() => {
-              navigation.navigate('ChatMessages', { friendId: data.id });
+              navigation.navigate('ChatMessages', {
+                friendId: data.id,
+              });
+              setFriendId(data.id);
             }}
           />
         )}
