@@ -114,8 +114,8 @@ export default function Friends() {
     setRefreshList(true);
   }
 
-  console.tron.log('moreData', moreData);
-  console.tron.log('page', page);
+  // console.tron.log('moreData', moreData);
+  // console.tron.log('page', page);
 
   return (
     <Background>

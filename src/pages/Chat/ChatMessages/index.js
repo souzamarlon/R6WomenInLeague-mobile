@@ -23,7 +23,7 @@ import {
 export default function ChatMessages({ receivedMessages, newChatId, route }) {
   const [chatId, setChatId] = useState(0);
   const [allMessages, setAllMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
   const [lastMessagesDate, setLastMessagesDate] = useState([]);
   const [friendInfo, setFriendInfo] = useState({});
   const [avatar, setAvatar] = useState({});
@@ -108,12 +108,13 @@ export default function ChatMessages({ receivedMessages, newChatId, route }) {
         ...allMessages,
         { user: profile.id, message: newMessage },
       ]);
+      setNewMessage('');
     }
 
     await api.put(`/chat/${chatId}`, { message: newMessage });
 
     setAllMessages([...allMessages, { user: profile.id, message: newMessage }]);
-    setNewMessage([]);
+    setNewMessage('');
   }
 
   async function loadPage() {
@@ -170,10 +171,11 @@ export default function ChatMessages({ receivedMessages, newChatId, route }) {
           autoCorrect={false}
           autoCapitalize="none"
           placeholder="Hi!"
+          returnKeyType="next"
           multiline
           // numberOfLines={50}
           maxLength={240}
-          value={() => newMessage}
+          value={newMessage}
           onChangeText={setNewMessage}
         />
         <SubmitButton onPress={handleSubmit}>
