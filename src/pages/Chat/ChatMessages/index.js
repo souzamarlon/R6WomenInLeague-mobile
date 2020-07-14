@@ -20,9 +20,10 @@ import {
   SubmitButton,
 } from './styles';
 
-export default function ChatMessages({ newMessages, newChatId, route }) {
+export default function ChatMessages({ receivedMessages, newChatId, route }) {
   const [chatId, setChatId] = useState(0);
   const [allMessages, setAllMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState([]);
   const [lastMessagesDate, setLastMessagesDate] = useState([]);
   const [friendInfo, setFriendInfo] = useState({});
   const [avatar, setAvatar] = useState({});
@@ -91,28 +92,33 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
     if (!chatId) {
       setChatId(newChatId);
     }
-    if (newMessages) {
-      setAllMessages([...allMessages, newMessages]);
+    if (receivedMessages) {
+      setAllMessages([...allMessages, receivedMessages]);
     }
-  }, [newMessages, newChatId]);
+  }, [receivedMessages, newChatId]);
 
-  async function handleSubmit({ message }) {
+  async function handleSubmit() {
     if (allMessages.length <= 0) {
-      const response = await api.post(`/chat/${friendId}`, { message });
+      const response = await api.post(`/chat/${friendId}`, {
+        message: newMessage,
+      });
       // setChatId(_id);
       setChatId(response.data._id);
-      setAllMessages([...allMessages, { user: profile.id, message }]);
+      setAllMessages([
+        ...allMessages,
+        { user: profile.id, message: newMessage },
+      ]);
     }
 
-    await api.put(`/chat/${chatId}`, { message });
+    await api.put(`/chat/${chatId}`, { message: newMessage });
 
-    setAllMessages([...allMessages, { user: profile.id, message }]);
+    setAllMessages([...allMessages, { user: profile.id, message: newMessage }]);
+    setNewMessage([]);
   }
+
   async function loadPage() {
     setRefreshList(true);
   }
-
-  console.tron.log(allMessages.length > 0);
 
   return (
     <Container>
@@ -167,8 +173,8 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           multiline
           // numberOfLines={50}
           maxLength={240}
-          // value={description}
-          // onChangeText={setDescription}
+          value={() => newMessage}
+          onChangeText={setNewMessage}
         />
         <SubmitButton onPress={handleSubmit}>
           <Icon name="send" size={30} color="#fff" style={{ marginTop: 0 }} />
