@@ -137,7 +137,7 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           <Icon
             name="radio-button-checked"
             size={15}
-            color="#999"
+            color="#f90707"
             style={{ marginTop: 3 }}
           />
         )}
@@ -157,6 +157,7 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           )}
         />
       </Content>
+
       <Form>
         <TInput
           keyboardType="default"
@@ -164,13 +165,13 @@ export default function ChatMessages({ newMessages, newChatId, route }) {
           autoCapitalize="none"
           placeholder="Hi!"
           multiline
-          numberOfLines={50}
-          maxLength={500}
+          // numberOfLines={50}
+          maxLength={240}
           // value={description}
           // onChangeText={setDescription}
         />
         <SubmitButton onPress={handleSubmit}>
-          <Icon name="send" size={30} color="#999" style={{ marginTop: 3 }} />
+          <Icon name="send" size={30} color="#fff" style={{ marginTop: 0 }} />
         </SubmitButton>
       </Form>
     </Container>

@@ -4,12 +4,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   width: 100%;
-  /* flex: 1; */
-  /* margin: auto;
-  width: 605px;
-  height: 700px;
-  background: #fff;
-  border-radius: 4px; */
+  flex: 1;
 `;
 
 export const FriendInfo = styled.View`
@@ -43,14 +38,9 @@ export const FriendLastMessage = styled.Text`
 `;
 
 export const Content = styled.View`
-  /* height: 540px; */
-  height: 75%;
   background: rgba(222, 222, 255, 0.3);
-  overflow: hidden;
   width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  /* transition: all 0.5s; */
+  flex: 1;
 `;
 
 export const List = styled.FlatList.attrs({
@@ -58,7 +48,9 @@ export const List = styled.FlatList.attrs({
   contentContainerStyle: {
     // paddingTop: 10,
   },
-})``;
+})`
+  height: 80%;
+`;
 
 export const MessageField = styled.View`
   background: ${(props) => (props.backgroundColor ? '#FFF' : '#dcf8c6')};
@@ -81,29 +73,36 @@ export const Text = styled.Text`
 
 export const Form = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: Platform.OS === 'ios' ? 'padding' : 'height',
-  keyboardVerticalOffset: 100,
+  behavior: Platform.OS === 'ios' ? 'padding' : 'padding',
+  // keyboardVerticalOffset: 20,
 })`
-  display: flex;
   flex-direction: row;
-  /* margin-top: 20px; */
-  margin: 20px 20px;
+  margin: 10px 10px;
+  justify-content: space-between;
 `;
 
 export const TInput = styled.TextInput.attrs({
   placeholderTextColor: 'rgba(0, 0, 0, 0.2)',
   textAlignVertical: 'top',
 })`
-  /* flex: 1; */
   background: #fff;
-  /* padding: 20px 20px; */
-  height: 50px;
-  width: 250px;
+
+  /* height: 50px; */
+  width: 85%;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 10px;
 `;
 
 export const SubmitButton = styled(RectButton)`
-  margin-top: 2px;
-  /* background: #7d40e7; */
+  /* margin-top: 2px; */
+  background: #075e54;
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `;
