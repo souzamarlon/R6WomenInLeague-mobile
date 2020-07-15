@@ -9,10 +9,6 @@ const api = axios.create({
 });
 
 api.registerInterceptWithStore = (store) => {
-  // const profile = store.useSelector((state) => state.user.profile);
-
-  // console.tron.log(profile);
-
   api.interceptors.response.use(
     (response) => response,
 

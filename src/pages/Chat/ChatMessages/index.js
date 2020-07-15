@@ -36,6 +36,8 @@ export default function ChatMessages({ route }) {
   const profile = useSelector((state) => state.user.profile);
   const { friendId } = route.params;
 
+  const flatListRef = useRef();
+
   const socket = io('http://192.168.25.32:3333', {
     query: { user: profile.id },
   });
@@ -70,12 +72,8 @@ export default function ChatMessages({ route }) {
               "MMMM d',' yyyy"
             )
           );
+
           setRefreshList(false);
-          // ref.current.scrollIntoView({
-          //   behavior: 'smooth',
-          //   block: 'end',
-          //   inline: 'nearest',
-          // });
         }
       } catch (err) {
         // hasMessages(false);
@@ -180,8 +178,11 @@ export default function ChatMessages({ route }) {
       </FriendInfo>
       <Content>
         <List
+          ref={flatListRef}
+          onContentSizeChange={() => flatListRef.current.scrollToEnd()}
           data={allMessages}
           refreshing={refreshList}
+          // initialNumToRender={14}
           onRefresh={loadPage}
           keyExtractor={(item) => String(item._id)}
           renderItem={({ item: data }) => (
