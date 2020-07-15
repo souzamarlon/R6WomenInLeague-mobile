@@ -3,7 +3,6 @@ import { TouchableOpacity } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SignIn from './pages/SignIn';
@@ -23,8 +22,8 @@ const Tabs = createBottomTabNavigator();
 function ChatStack({ navigation }) {
   return (
     <Stack.Navigator
-      initialRouteName="Chat"
-      headerMode="screen"
+      // initialRouteName="Chat"
+      // headerMode="screen"
       screenOptions={{
         headerTransparent: true,
         headerTintColor: '#FFF',
@@ -44,6 +43,7 @@ function ChatStack({ navigation }) {
         component={Chat}
         options={{ headerShown: false, headerTransparent: true }}
       />
+
       <Stack.Screen
         name="ChatMessages"
         component={ChatMessages}
@@ -53,7 +53,7 @@ function ChatStack({ navigation }) {
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => {
-                navigation.goBack();
+                navigation.navigate('Chat');
               }}
             >
               <Icon
@@ -130,10 +130,10 @@ export default function createRouter(isSigned = false) {
         }}
       />
       <Tabs.Screen
-        name="Chat"
+        name="ChatStack"
         component={ChatStack}
         options={{
-          // tabBarLabel: '',
+          tabBarVisible: true,
           tabBarIcon: ({ color }) => (
             <Icon name="chat" size={30} color={color} />
           ),

@@ -20,7 +20,7 @@ import {
   SubmitButton,
 } from './styles';
 
-export default function ChatMessages({ route }) {
+export default function ChatMessages({ route, navigation }) {
   const [chatId, setChatId] = useState(0);
   const [allMessages, setAllMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import Background from '~/components/Background';
 import api from '~/services/api';
 
@@ -69,6 +70,13 @@ export default function Chat({ navigation }) {
     setRefreshList(true);
   }
 
+  function handleSelectFriend(id) {
+    navigation.navigate('ChatMessages', {
+      friendId: id,
+    });
+    setFriendId(id);
+  }
+
   return (
     <Background>
       <Container
@@ -84,15 +92,16 @@ export default function Chat({ navigation }) {
         renderItem={({ item: data }) => (
           <ChatFriendsList
             friendData={data}
-            onPress={() => {
-              navigation.navigate('ChatMessages', {
-                friendId: data.id,
-              });
-              setFriendId(data.id);
-            }}
+            onPress={() => handleSelectFriend(data.id)}
           />
         )}
       />
     </Background>
   );
 }
+
+Chat.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};

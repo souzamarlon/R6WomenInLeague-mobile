@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Alert, ActivityIndicator } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import Background from '~/components/Background';
 
 import Card from '~/components/Card';
@@ -15,6 +16,14 @@ export default function Dashboard() {
   const [moreData, setMoreData] = useState(false);
 
   const flatListRef = useRef();
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    if (isFocused) {
+      setRefreshList(true);
+    }
+  }, [isFocused]);
 
   useEffect(() => {
     async function SearchFun() {
