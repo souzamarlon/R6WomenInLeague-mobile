@@ -13,7 +13,6 @@ export default function Chat({ navigation }) {
   const [friendId, setFriendId] = useState();
   const [friendsData, setFriendsData] = useState([]);
 
-  const [status, setStatus] = useState({});
   const [refreshList, setRefreshList] = useState(false);
 
   const userId = useSelector((state) => state.user.profile.id);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import PropTypes from 'prop-types';
 import api from '~/services/api';
 
 import { Container, Avatar, Info, UserName, Text } from './styles';
@@ -55,3 +56,11 @@ export default function ChatFriendsList({ friendData, onPress }) {
     </Container>
   );
 }
+
+ChatFriendsList.propTypes = {
+  friendData: PropTypes.shape({
+    uplay: PropTypes.string,
+    name: PropTypes.string,
+    status: PropTypes.bool,
+  }).isRequired,
+};
