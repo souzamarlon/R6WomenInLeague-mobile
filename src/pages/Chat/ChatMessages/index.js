@@ -3,6 +3,8 @@ import io from 'socket.io-client';
 import { format, parseISO } from 'date-fns';
 import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
+
 import api from '~/services/api';
 
 import {
@@ -213,3 +215,14 @@ export default function ChatMessages({ route, navigation }) {
     </Container>
   );
 }
+
+ChatMessages.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      friendId: PropTypes.number,
+    }),
+  }).isRequired,
+};
