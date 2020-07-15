@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Background from '~/components/Background';
@@ -24,7 +25,7 @@ export default function Chat({ navigation }) {
           params: {
             accepted: true,
             page: 1,
-            per_page: 20,
+            per_page: 30,
           },
         });
 
@@ -59,7 +60,7 @@ export default function Chat({ navigation }) {
         setFriendsData(allData);
         setRefreshList(false);
       } catch (err) {
-        // toast.error('Failure!');
+        Alert.alert('Failure!');
       }
     }
 
@@ -86,7 +87,7 @@ export default function Chat({ navigation }) {
         onRefresh={loadPage}
         // horizontal
         // numColumns={2}
-        initialNumToRender={14}
+        // initialNumToRender={14}
         // scrollEventThrottle={400}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item: data }) => (
